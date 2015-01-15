@@ -1,2 +1,2 @@
 # BigBearStack
-FAQ board for the communit of BigBearLake, CA
+FAQ board for the community of BigBearLake, CA
