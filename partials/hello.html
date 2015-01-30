@@ -1,0 +1,70 @@
+<div id="template-position-1-topbar"></div>
+<img id="template-position-2-mainIMG"></img>
+<div id="template-position-3-maincontentContainer">
+<div id="tabsPanel" ng-controller="tabsController as tabsCtrl">
+<section>
+ <ul id="tabsUl">
+   <li> <a href="#/search" ng-click="tabsCtrl.setTab(1)">Search</a> </li>
+   <li> <a href="#/featured" ng-click="tabsCtrl.setTab(2)">Featured</a> </li>
+   <li> <a href="#/ask" ng-click="tabsCtrl.setTab(3)">Ask</a> </li>
+ </ul>
+</section>
+</div>
+<div id="allPanels">
+<div id="panel1" ><h4>Search</h4>
+<div ng-controller="searchPanel as searches">
+      <!--Sidebar content-->
+
+      <input  ng-model="query" placeholder="search">
+      <select ng-model="orderProp">
+        <option value="author">author</option>
+        <option value="question">question</option>
+      </select>
+      <button type="button" ng-click="searches.searchDB()">Search</button>
+
+
+<div ng-repeat="x in data | filter:query | orderBy:orderProp" class="questionsDisplay">
+<p class="questiontitle"><a href="#/tryit">{{x.question}}</a> </p>  {{ x.author }}
+</div>
+</div>
+
+</div>
+
+<div id="panel2" ><h4>Featured</h4></div>
+<div id="panel3" ><h4>Ask</h4>
+
+<div ng-controller="QformCtrl as Fctrl">
+  <p>Question Preview</p>
+  <div class="questionPreview">
+  <p>{{ question }}</p>
+  <p>{{ author}}</p>
+  <div class="tagPreviewContainer"><p>Tags</p>
+  <div class="tagPreviewTag" ng-show="ski"> {{ Fctrl.ski }}</div>
+  <div class="tagPreviewTag" ng-show="bike">{{ Fctrl.bike }}</div>
+  <div class="tagPreviewTag" ng-show="snow">{{ Fctrl.snow }}</div>
+  </div>
+  </div>
+  <br>
+  <div class="QformContainer">
+  <form name ="Qform" class="Qform" novalidate>
+    <input type="text" name="question" ng-model="question" placeholder="What's your question?"><br>
+    <br>
+    <input type="text" name="author" ng-model="author" placeholder="Author">
+    <br><br>
+    <div class="QformTags">
+    <input type="checkbox" value="ski" ng-model="ski">Ski
+    <input type="checkbox" value="bike" ng-model="bike">bike
+    <input type="checkbox" value="snow" ng-model="snow">snow<br>
+    <button ng-click="Fctrl.postThisQ(this)">Post Question</button>
+    </div>
+  </form>
+  </div>
+</div>
+
+ 
+ 
+</div>
+</div>
+</div>
+<div id="template-position-4-sidebar">right side bar</div>
+<div id="template-position-5-footer">footer</div>

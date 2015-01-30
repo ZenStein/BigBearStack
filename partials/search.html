@@ -1,0 +1,57 @@
+
+
+
+<form>
+  <div class="input-group input-group-lg" style="margin-top:20px;margin-bottom:20px;">
+    <span class="input-group-addon" id="sizing-addon1">
+      <span class="glyphicon glyphicon-search"></span>
+    </span>
+    <input type="text" name="Qstring" ng-model="query" class="form-control" placeholder="So what would you like to know ???" aria-describedby="sizing-addon1">
+           
+  </div> 
+  <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+    <span class="glyphicon glyphicon-tags">&nbsp;&nbsp;</span>
+    <span class="glyphicon glyphicon-triangle-bottom" ng-show="!isCollapsed"></span>
+    <span class="glyphicon glyphicon-triangle-top" ng-show="isCollapsed"></span>
+  </button>&nbsp;&nbsp;
+  <div ng-repeat="x in searchctrl.Tags.tagdata" style="display:inline;">
+  <label class="btn btn-{{x.class}} btn-xs" ng-model="x.selected" ng-click="searchctrl.setUnsetTagFilt(x.html); x.selected = !x.selected" ng-show="x.selected">
+    {{x.html}}
+  </label>
+  </div>   
+  <div class="row">
+    <div class="col-lg-2" style="text-align:center;">
+      <div collapse="!isCollapsed">
+        Filter By Tags:<br>
+        <label ng-repeat="y in searchctrl.Tags.tagdata" class="btn btn-{{y.class}} btn-xs" ng-model="y.selected" ng-disabled="searchctrl.tagFilters.filterNames.length >= 2" ng-click="searchctrl.setUnsetTagFilt(y.html)"btn-checkbox>
+          {{y.html}}
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-sm-2 col-md-3 col-lg-3"></div>
+    <div class="col-sm-8 col-md-6 col-lg-6">
+      <input type="button" ng-click="searchctrl.gosomewhere(query)" ng-model="query"></input>
+      <input type="submit" class="btn btn-primary btn-lg btn-block" value="Ask!!" ng-click="searchctrl.getQueryQs(this)"></input>
+    </div>
+    <div class="col-sm-2 col-md-3 col-lg-3"></div>
+  </div>
+  
+<hr style=" height:20px;">  
+</form><br>
+<div class="row">
+  <div class="col-lg-12" style="text-align:center;">
+    <div class="well well-sm" ng-repeat="data in searchctrl.searchresults.data | filter:searchctrl.tagFilters.filterNames[0] | filter:searchctrl.tagFilters.filterNames[1]">
+      <a href="#/search/{{data.qid}}"><h3>{{data.question | uppercase}} ?</h3></a><br>
+    <div ng-repeat="tag in data.tags" style="display:inline;">
+      <label class="btn btn-success btn-xs">{{ tag }}</label>&nbsp;&nbsp;
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
