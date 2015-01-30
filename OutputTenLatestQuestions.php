@@ -16,14 +16,20 @@ $i = 0;
 while($r = $result->fetch_array(MYSQLI_ASSOC))
 {
   $questionid = $r['questionid'];
-  $tag = $r['tags'];
+  //$tag = $r['tags'];
+  $tag = explode(",",$r['tags']);
   $auth =$r['author'];
   $q = $r['question'];
-  $jsonArr[$i] = array("qid"=>$questionid, "author"=>$auth,"question"=>$q);  
+  $jsonArr[$i] = array("qid"=>$questionid, "question"=>$q, "tags"=>$tag);  
   $i++;
 }
 
 echo json_encode($jsonArr);
+
+
+
+
+
 //$MOCKquest1 = "WHERE CAN I FIND THE LAKE ";
 //$MOCKquest2 = "what is the zip code ";
 //$MOCKquest3 = "where is a good place to eat ";

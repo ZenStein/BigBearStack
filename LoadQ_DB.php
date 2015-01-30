@@ -1,43 +1,25 @@
 <?php
-include 'functions.php';
+  include 'functions.php';
+  include 'classes.php';
+  
+    $MrCleaner = new InputsCleanse(
+    array(
+      "question"=>$_REQUEST['question'], 
+      "tags"    =>$_REQUEST['tags'], 
+      "author" =>$_REQUEST['author']
+    ));
+  $question = $_REQUEST['question'];
+  $tags     = $_REQUEST['tags'];
+  $keywords = $MrCleaner->getKeywordsAsString();
+  $author   = $_REQUEST['author'];
+  $a        = InsertNewQuestion($question, $tags, $keywords, $author);
+  if($a == 200){
+    echo "success!!";
+  }
+  else{
+    echo "fail";
+  }
 
-$rowid = "";
-$questionid = generateUniqueId();
-$category = findCategoryInQuestion($_REQUEST['question']);
-$tags = $_REQUEST['tags'];
-$author = $_REQUEST['author'];
-$answerids= "";
-$likes = "";
-$views = "";
-$question = $_REQUEST['question'];
-
-$a =InsertNewQuestion($rowid, $questionid, $category, $tags, $author, $answerids, $likes, $views, $question);
-$inserttags = InsertTagsINTOquestionTags($_REQUEST['tags'], $questionid);
-
-if($a == 200){echo "success!!";}
-else{echo "fail";}
-
-
-
-
-
-
-
- // $db = MySQLi_localhost_connect();
-//  $query = "INSERT INTO `Cabins4LessFAQ`.`Master_Questions` 
-//                      (`rowid`, `questionid`, `timestamp`, 
-//                       `category`, `tags`, `author`, `answerids`, 
-//                       `likes`, `views`, `question`) 
-//                       VALUES ($rowid, '$questionid', $timestamp, '$category', 
-//                              '$tags', '$author', '$answerids', 
-//                              '$likes', '$views', '$question');";
-//  if ($stmt = $db->prepare($query)) {
-//    //$stmt->bind_param("iii", $rowid, $questionid, $timestamp, $category, $tags, $author, $answerids, $likes, $views, $question);
-//    /* execute statement */
-//    $stmt->execute();
-//    if($stmt->affected_rows == 1){ $stmt->close(); return "200";}
-//    else{return "error infunction InsertNewQuestion";}
-//  }
-//  else{return false;}
+//  echo "type is: " . gettype($_REQUEST['tags']) . " and contents are: " . check_input($_REQUEST['tags']) . "entities = &#33;";
 
 ?>
