@@ -24,7 +24,7 @@
 
 
 <div ng-repeat="x in data | filter:query | orderBy:orderProp" class="questionsDisplay">
-<p class="questiontitle"><a href="#/tryit">{{x.question}}</a> </p>  {{ x.author }}
+<p class="questiontitle"><a href="#/tryit">{{x.question}}</a> </p> {{ x.author; }}
 </div>
 </div>
 
@@ -52,9 +52,9 @@
     <input type="text" name="author" ng-model="author" placeholder="Author">
     <br><br>
     <div class="QformTags">
-    <input type="checkbox" value="ski" ng-model="ski">Ski
-    <input type="checkbox" value="bike" ng-model="bike">bike
-    <input type="checkbox" value="snow" ng-model="snow">snow<br>
+    <input type="checkbox" value="ski" ng-model="ski">Ski;
+        <input type="checkbox" value="bike" ng-model="bike">bike;
+        <input type="checkbox" value="snow" ng-model="snow">snow<br>
     <button ng-click="Fctrl.postThisQ(this)">Post Question</button>
     </div>
   </form>

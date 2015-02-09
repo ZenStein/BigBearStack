@@ -1,31 +1,41 @@
-
+<div>
   <div class="row">
     <div class="col-sm-2 col-md-2 col-lg-2"></div>
-    <div class="col-sm-8 col-md-8 col-lg-8" style="background:#0075BF; border:#004875 medium solid; border-radius:5px; text-align:center; height:175px;">
+    <div class="col-sm-8 col-md-8 col-lg-8" style="background:#0075BF; border:#004875 medium solid; border-radius:5px; text-align:center; height:100px;">
       <p style="font-size:25px;">{{ askctrl.user.question | uppercase}}?</p><br>
       <p style="text-align:right; margin-right:20px;"><i>~{{askctrl.user.author }}~</i></p><br>
       <label ng-repeat="x in askctrl.Tags.tagdata" class="btn btn-{{x.class}} btn-xs" ng-model="x.selected" ng-show="x.selected">
        {{x.html}}
-     </label>   
+     </label>
     </div>
-    <div class="col-sm-2 col-md-2 col-lg-2"></div>    
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+
   </div>
   <hr>
-  <div class="QformContainer">
-<form name ="Qform" class="Qform" novalidate>
+  <div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8" style="background:#0075BF; border:#004875 medium solid; border-radius:5px; text-align:center;">
+<form name ="Qform"  novalidate>
   <div class="form-group">
-    <label for="usersQuestion">Question</label>
+    <label for="question">Question</label>
     <input type="text" class="form-control" id="question" name="question" ng-model="askctrl.user.question" placeholder="Ask us anything...">
   </div>
   <div class="form-group">
-    <label for="usersName">Author</label>
+    <label for="author">Author</label>
     <input type="name" class="form-control" id="author" name="author" ng-model="askctrl.user.author" placeholder="Identify yo self!">
   </div>
-            <label ng-repeat="y in askctrl.Tags.tagdata" class="btn btn-{{y.class}} btn-xs" ng-model="y.selected" btn-checkbox>
-            {{y.html}}
-          </label><br><br><br>
-  <button type="submit" value="PostQ" class="btn btn-primary btn-lg btn-block" ng-click="askctrl.postThisQ(this)">Post Question</button>
+  <div class="form-group">
+      <label ng-repeat="y in askctrl.Tags.tagdata" class="btn btn-{{y.class}} btn-xs" ng-model="y.selected" btn-checkbox>
+        {{y.html}}
+      </label><br><br><br>
+
+  </div>
+  <div class="form-group">
+    <button type="submit" value="PostQ" class="btn btn-primary btn-lg btn-block" ng-click="askctrl.postThisQ(this)">Post Question</button>
+  </div>
+
 </form>
   </div>
-  
-  
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+  </div>
+</div>

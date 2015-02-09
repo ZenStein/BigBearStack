@@ -24,13 +24,12 @@ a{top:0px;}
     padding-right:0px;      
 }
 #CsAo-navtab-row [CsAo-tab]{
-    background-color:#DEDBDB;
     text-align:center;
     border-top-left-radius:15px;
     border-top-right-radius:15px;
     }     
-#main-ngview-container{
-    background-color:#DEDBDB;
+#main-ngview-container, [CsAo-tab]{
+    background-color:#CCCCCC;
 }
 #CsAo-navtab-row a{
     font-size:24px;

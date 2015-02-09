@@ -51,15 +51,32 @@
   }
   
   class InputsCleanse extends StringVersioner{
+  /*********************************
+  *
+  *
+  * if you construct with an array, 
+  * it must be assoc. 
+  * passing string at key ['turntokeywords']
+  * will remove unwanted words, 
+  * and sets $querystring to comma 
+  * separated string 
+  *
+  *
+  **********************************/
+
   /*properties*/
     private $ArrOfInputs;  
   /*methods*/ 
     public function __construct($Arr){
-      call_user_func('parent::__construct', $Arr['question']);
+
+      
       $paramType = gettype($Arr);
       if($paramType == "array"){
         $CleansedArr = [];
         foreach ($Arr as $key => $value) {
+          if($key == "turntokeywords"){
+            call_user_func('parent::__construct', $Arr['turntokeywords']);
+          }
           $CleansedArr[$key] = trim($value);
           $CleansedArr[$key] = stripslashes($value);
           $CleansedArr[$key] = htmlspecialchars($value);

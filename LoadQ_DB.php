@@ -4,7 +4,7 @@
   
     $MrCleaner = new InputsCleanse(
     array(
-      "question"=>$_REQUEST['question'], 
+      "turntokeywords"=>$_REQUEST['question'], 
       "tags"    =>$_REQUEST['tags'], 
       "author" =>$_REQUEST['author']
     ));
