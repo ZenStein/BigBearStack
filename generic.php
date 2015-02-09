@@ -1,17 +1,10 @@
 <!doctype html>
-<html ng-app="newtry">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Untitled Document</title>
 </head>
-
+yoyoyoyo
 <body>
-<script ng-controller="myctrl as ctrl">
-
-
-
-
-</script>
-
 </body>
 </html>
