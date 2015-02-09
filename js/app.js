@@ -3,7 +3,7 @@
 /* App Module */
 
 (function(){
-
+//this is a note on my local, checking to see if I am pushing correctly
   var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap']);
   app.constant ('__ROOT__', 'http://www.poolpickem.com/');
   app.config (['$routeProvider', function ($routeProvider) {
