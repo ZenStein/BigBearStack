@@ -65,13 +65,13 @@
 
     return appSourcesPvdr;
   }]);
-  app.service('TagService', ['$http', function($http){
+  app.service('TagService', ['$http', '__ROOT__', function($http, __ROOT__){
     this.tagFilters = {filterNames: []};
     this.grabAllTags = function(){
       var allTags = this;
       var req = {
         method :  'POST',
-        url    :  'http://'+'www.poolpickem.com' +'/grabtags.php',
+        url    :  __ROOT__ + 'grabtags.php',
         headers: {'Content-Type': 'application/json'}
       };
       $http(req)
@@ -123,7 +123,7 @@
       TagService.setUnsetTagFilt(obj);
     };
   }]);
-  app.controller('QformCtrl', ['$http', 'TagService', function($http, TagService) {
+  app.controller('QformCtrl', ['$http', 'TagService', '__ROOT__', function($http, TagService, __ROOT__) {
     var postQ = this;
     this.Tags = TagService.grabAllTags();
     this.user = {"question":/*searchObject.query*/"My Great Q","author":"Auth"};
@@ -165,7 +165,7 @@
       };
       var req = { 
         method :  'POST',
-        url    :  'http://www.poolpickem.com/LoadQ_DB.php',
+        url    :  __ROOT__ + 'LoadQ_DB.php',
         headers: {'Content-Type' : 'application/json'},
         data   : {'test' : 'thisismytesttest'},
         params : this.postedQ 
@@ -199,12 +199,12 @@
     var pHolder = {"A":"1","B":"2","C":"3"};
   }]);
 
-  app.factory ('Qviewfactory', ['$http', function ($http) {
+  app.factory ('Qviewfactory', ['$http', '__ROOT__', function ($http, __ROOT__) {
 
 
      return {
        get: function (QorA, qid) {
-         return $http.get("http://www.poolpickem.com/get"+QorA+".php?qid="+qid)
+         return $http.get(__ROOT__+"get"+QorA+".php?qid="+qid)
          //    .then (function (result) {
            //console.log(result.data);
         //   return result.data;
@@ -305,7 +305,7 @@ this.openshut = function(answerElem) {
     };
 
   }]);
-  app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, $http, questionid, $routeParams) {
+  app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, $http, questionid, $routeParams, __ROOT__) {
     $scope.author = "anyn";
     $scope.answercontent = "content here";
     $scope.questionid = $routeParams.qid;
@@ -320,7 +320,7 @@ this.openshut = function(answerElem) {
         };
         var req = {
             method :  'POST',
-            url    :  'http://www.poolpickem.com/LoadAns_DB.php',
+            url    :  __ROOT__+'LoadAns_DB.php',
             headers: {'Content-Type' : 'application/json'},
             data   : {'test' : 'thisismytesttest'},
             params : $scope.postedAns
