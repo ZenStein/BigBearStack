@@ -305,7 +305,7 @@ this.openshut = function(answerElem) {
     };
 
   }]);
-  app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, $http, questionid, $routeParams, __ROOT__) {
+  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$http', 'questionid', '$routeParams', '__ROOT__', function ($scope, $modalInstance, $http, questionid, $routeParams, __ROOT__) {
     $scope.author = "anyn";
     $scope.answercontent = "content here";
     $scope.questionid = $routeParams.qid;
@@ -335,7 +335,7 @@ this.openshut = function(answerElem) {
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
-});
+}]);
 })();
 
 
