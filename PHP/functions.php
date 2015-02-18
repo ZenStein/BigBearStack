@@ -2,13 +2,13 @@
   function MySQLi_localhost_connect()
   {
    /*Localhost*/
-   // $host     = 'localhost';
-   // $username = 'root';
-   // $password = 'password';
+    $host     = 'localhost';
+    $username = 'root';
+    $password = 'password';
    /*Godaddy*/
-   $host     = 'localhost';
-   $username = 'tymetakrDB';
-   $password = 'Aquem1n1';
+   //$host     = 'localhost';
+   //$username = 'tymetakrDB';
+   //$password = 'Aquem1n1';
 
     $database = 'Cabins4LessFAQ';
     $db = new MySQLi($host,$username,$password,$database);
