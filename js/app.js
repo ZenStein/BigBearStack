@@ -4,7 +4,7 @@
 
 (function(){
 //this is a note on my local, checking to see if I am pushing correctly
-  var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap']);
+  var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap','admin_module']);
   app.constant ('__ROOT__', 'http://localhost/PHP/');
   app.config (['$routeProvider', function ($routeProvider) {
     $routeProvider.
