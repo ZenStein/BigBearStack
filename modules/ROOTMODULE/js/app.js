@@ -4,28 +4,29 @@
 
 (function(){
 //this is a note on my local, checking to see if I am pushing correctly
-  var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap','admin_module']);
-  app.constant ('__ROOT__', 'http://localhost/PHP/');
+  var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap','admin']);
+  app.constant ('ROOT_HOST', 'http://localhost/');
+  app.constant ('ROOTMODULE_PHP', 'modules/ROOTMODULE/PHP/ROOTMODULE_PHP/');
   app.config (['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when ('/', {
-          templateUrl: 'partials/search.html',
+          templateUrl: 'modules/ROOTMODULE/partials/search.html',
           controller: 'searchPanel as searchctrl'
         }).
         when ('/search', {
-          templateUrl: 'partials/search.html',
+          templateUrl: 'modules/ROOTMODULE/partials/search.html',
           controller: 'searchPanel as searchctrl'
         }).
         when ('/search/:qid', {
-          templateUrl: 'partials/viewQ.html',
+          templateUrl: 'modules/ROOTMODULE/partials/viewQ.html',
           controller: 'Qviewctrl as Qviewerctrl'
         }).
         when ('/post', {
-          templateUrl: 'partials/post.html',
+          templateUrl: 'modules/ROOTMODULE/partials/post.html',
           controller: 'QformCtrl as askctrl'
         }).
         when ('/featured', {
-          templateUrl: 'partials/featured.html',
+          templateUrl: 'modules/ROOTMODULE/partials/featured.html',
           controller: 'featuredController as featctrl'
         }).
         otherwise ({
@@ -33,17 +34,17 @@
         });
   }]);
 
-  app.provider ("appSourcesPvdr", ["__ROOT__", function (__ROOT__) {
+  app.provider ("appSourcesPvdr", ["ROOT_HOST","ROOTMODULE_PHP", function (ROOT_HOST, ROOTMODULE_PHP) {
     function get () {
       var sayit = function () {
         alert ("isaidit");
       };
       var urls = {
-      searchquery : __ROOT__ + "getSearchResults.php",
+      searchquery : ROOT_HOST + ROOTMODULE_PHP + "getSearchResults.php",
               getQ : "otherQsearch"
                     };
       return {
-      __ROOT__: __ROOT__,
+      ROOT_HOST: ROOT_HOST,
          sayit : sayit,
            urls : urls
                  };
@@ -65,13 +66,13 @@
 
     return appSourcesPvdr;
   }]);
-  app.service('TagService', ['$http', '__ROOT__', function($http, __ROOT__){
+  app.service('TagService', ['$http', 'ROOT_HOST', 'ROOTMODULE_PHP', function($http, ROOT_HOST, ROOTMODULE_PHP){
     this.tagFilters = {filterNames: []};
     this.grabAllTags = function(){
       var allTags = this;
       var req = {
         method :  'POST',
-        url    :  __ROOT__ + 'grabtags.php',
+        url    :  ROOT_HOST + ROOTMODULE_PHP + 'grabtags.php',
         headers: {'Content-Type': 'application/json'}
       };
       $http(req)
@@ -123,7 +124,7 @@
       TagService.setUnsetTagFilt(obj);
     };
   }]);
-  app.controller('QformCtrl', ['$http', 'TagService', '__ROOT__', function($http, TagService, __ROOT__) {
+  app.controller('QformCtrl', ['$http', 'TagService', 'ROOT_HOST','ROOTMODULE_PHP', function($http, TagService, ROOT_HOST, ROOTMODULE_PHP) {
     var postQ = this;
     this.Tags = TagService.grabAllTags();
     this.user = {"question":/*searchObject.query*/"My Great Q","author":"Auth"};
@@ -165,7 +166,7 @@
       };
       var req = { 
         method :  'POST',
-        url    :  __ROOT__ + 'LoadQ_DB.php',
+        url    :  ROOT_HOST + ROOTMODULE_PHP + 'LoadQ_DB.php',
         headers: {'Content-Type' : 'application/json'},
         data   : {'test' : 'thisismytesttest'},
         params : this.postedQ 
@@ -199,12 +200,12 @@
     var pHolder = {"A":"1","B":"2","C":"3"};
   }]);
 
-  app.factory ('Qviewfactory', ['$http', '__ROOT__', function ($http, __ROOT__) {
+  app.factory ('Qviewfactory', ['$http', 'ROOT_HOST', 'ROOTMODULE_PHP', function ($http, ROOT_HOST, ROOTMODULE_PHP) {
 
 
      return {
        get: function (QorA, qid) {
-         return $http.get(__ROOT__+"get"+QorA+".php?qid="+qid)
+         return $http.get(ROOT_HOST+ ROOTMODULE_PHP + "get"+QorA+".php?qid="+qid)
          //    .then (function (result) {
            //console.log(result.data);
         //   return result.data;
@@ -305,7 +306,7 @@ this.openshut = function(answerElem) {
     };
 
   }]);
-  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$http', 'questionid', '$routeParams', '__ROOT__', function ($scope, $modalInstance, $http, questionid, $routeParams, __ROOT__) {
+  app.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$http', 'questionid', '$routeParams', 'ROOT_HOST','ROOTMODULE_PHP', function ($scope, $modalInstance, $http, questionid, $routeParams, ROOT_HOST, ROOTMODULE_PHP) {
     $scope.author = "anyn";
     $scope.answercontent = "content here";
     $scope.questionid = $routeParams.qid;
@@ -320,7 +321,7 @@ this.openshut = function(answerElem) {
         };
         var req = {
             method :  'POST',
-            url    :  __ROOT__+'LoadAns_DB.php',
+            url    :  ROOT_HOST+ ROOTMODULE_PHP + 'LoadAns_DB.php',
             headers: {'Content-Type' : 'application/json'},
             data   : {'test' : 'thisismytesttest'},
             params : $scope.postedAns
