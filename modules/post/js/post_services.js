@@ -62,32 +62,3 @@ function postService($http, ROOT_HOST, PHPpost, ROOTService){
 
 }
 
-
-
-/*********************/
- //var objValsToArr = function (ArrObj) {
-		//		var TagString = "";
-		//		var numObj = ArrObj.length;
-		//		for (var x = 0; x < numObj; x++) {
-		//				if ( ArrObj[x].hasOwnProperty ('selected') && ArrObj[x].selected === true ) {
-		//						TagString += ArrObj[x].html + ",";
-		//				}
-		//		}
-		//		return TagString.slice (0, -1);
-		//};
-
-//function reset_tags () {
-//		var numObj = postctrl.Tags.tagdata.length;
-//		for (var x = 0; x < numObj; x++) {
-//				if ( postctrl.Tags.tagdata[x].hasOwnProperty ('selected') && postctrl.Tags.tagdata[x].selected === true ) {
-//						postctrl.Tags.tagdata[x].selected = false;
-//				}
-//		}
-//}
-
-//function resetform () {
-//		postctrl.user.question = "";
-//		postctrl.user.author = "";
-//		reset_tags ();
-//		alert ("Thank you for your submitting a question!");
-//}

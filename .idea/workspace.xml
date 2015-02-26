@@ -2,21 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63cba7d2-871a-4d0c-b2fc-643766387e24" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/animations.js" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/ROOT/PHP/ROOTMODULE_PHP/OutputTenLatestQuestions.php" afterPath="$PROJECT_DIR$/modules/ROOT/PHP/ROOT_PHP/OutputTenLatestQuestions.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/ROOT/PHP/ROOTMODULE_PHP/generic.php" afterPath="$PROJECT_DIR$/modules/ROOT/PHP/ROOT_PHP/generic.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/ROOT/PHP/ROOTMODULE_PHP/grabtags.php" afterPath="$PROJECT_DIR$/modules/ROOT/PHP/ROOT_PHP/grabtags.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/ROOT/PHP/ROOTMODULE_PHP/markuptests.php" afterPath="$PROJECT_DIR$/modules/ROOT/PHP/ROOT_PHP/markuptests.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/modules/ROOT/PHP/ROOTMODULE_PHP/mockdata.php" afterPath="$PROJECT_DIR$/modules/ROOT/PHP/ROOT_PHP/mockdata.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/answerviewer/js/answerviewer_controllers.js" afterPath="$PROJECT_DIR$/modules/answerviewer/js/answerviewer_controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/answerviewer/js/answerviewer_services.js" afterPath="$PROJECT_DIR$/modules/answerviewer/js/answerviewer_services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/ROOT/js/app.js" afterPath="$PROJECT_DIR$/modules/ROOT/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/post/js/post.js" afterPath="$PROJECT_DIR$/modules/post/js/post.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/post/js/post_controllers.js" afterPath="$PROJECT_DIR$/modules/post/js/post_controllers.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/app.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/controllers.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/directives.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/exampleQuestion.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/filters.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/functions.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/pageStyles.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/services.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/tags.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/tags2.json" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/test.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/js/thisislocal.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/BU_post.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/GLOBAL_CONSTANTS.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/Placeholder.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/garbage.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/hello.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/phone-detail.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/phone-list.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/qviewplaceholder.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/search.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/temphello.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modules/ROOT/partials/test.html" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/post/js/post_services.js" afterPath="$PROJECT_DIR$/modules/post/js/post_services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/search/js/search.js" afterPath="$PROJECT_DIR$/modules/search/js/search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/search/js/search_controllers.js" afterPath="$PROJECT_DIR$/modules/search/js/search_controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/search/js/search_services.js" afterPath="$PROJECT_DIR$/modules/search/js/search_services.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BigBearStack.iws" />
@@ -41,46 +50,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dwsync.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ROOT/js/_notes/dwsync.xml">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="546">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.15145631" vertical-offset="0" max-vertical-offset="2314">
+              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="post_services.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/post/js/post_services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="2496">
-              <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
-              <folding>
-                <element signature="n#!!doc;n#postService#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ROOT_services.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/modules/ROOT/js/ROOT_services.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="1300">
-              <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="search_controllers.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/modules/search/js/search_controllers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.16423358" vertical-offset="14" max-vertical-offset="702">
-              <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-              <folding>
-                <element signature="n#!!doc;n#search_ctrl_search_index#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -197,38 +172,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BigBearStack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BigBearStack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="search" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BigBearStack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BigBearStack" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modules" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -238,7 +181,7 @@
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
-    <property name="options.lastSelected" value="editor.preferences.completion" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
   </component>
@@ -324,12 +267,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="36" y="67" width="1858" height="977" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Documentation" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22584401" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" x="163" y="198" width="1350" height="229" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329849" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329849" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32945284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32945284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -391,14 +334,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/partials/search.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1742">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="55" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/search/js/search_directives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="639">
@@ -513,14 +448,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/partials/landing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="606">
-          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/admin/js/admin.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43817526" vertical-offset="77" max-vertical-offset="910">
@@ -547,54 +474,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-29.151516" vertical-offset="0" max-vertical-offset="2314">
-          <caret line="37" column="18" selection-start-line="37" selection-start-column="18" selection-end-line="37" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/thisislocal.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="637">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2080">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/tags2.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="639">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/tags.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="639">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="637">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/ROOT/js/ROOT_directives.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="639">
@@ -611,72 +490,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/pageStyles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="754">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/functions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="637">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/exampleQuestion.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1192054" vertical-offset="676" max-vertical-offset="1872">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/filters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="637">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="637">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/directives.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="637">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="312">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/ROOT.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.281022" vertical-offset="0" max-vertical-offset="858">
-          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bower_components/angular-animate/angular-animate.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="55718">
@@ -685,72 +498,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/search/js/search_services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09489051" vertical-offset="0" max-vertical-offset="624">
-          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!doc;n#searchFactory#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/search/js/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.75547445" vertical-offset="830" max-vertical-offset="1378">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/answerviewer/js/answerviewer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67346936" vertical-offset="117" max-vertical-offset="780">
-          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/answerviewer/js/answerviewer_controllers.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4693878" vertical-offset="0" max-vertical-offset="1768">
-          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/answerviewer/js/answerviewer_services.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1632653" vertical-offset="0" max-vertical-offset="1066">
-          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-          <folding>
-            <element signature="n#!!doc;n#answerviewerFactory#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/BigBearStack_index_styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="4238" max-vertical-offset="5434">
           <caret line="170" column="1" selection-start-line="170" selection-start-column="1" selection-end-line="170" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/partials/BU_post.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.030303" vertical-offset="0" max-vertical-offset="884">
-          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/modules/ROOT/partials/hello.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.181818" vertical-offset="1207" max-vertical-offset="1950">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -783,7 +534,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/ROOT/js/_notes/dwsync.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="546">
+        <state vertical-scroll-proportion="0.09489051" vertical-offset="0" max-vertical-offset="548">
           <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
           <folding />
         </state>
@@ -791,8 +542,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/post/js/post_services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="2496">
-          <caret line="37" column="33" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+        <state vertical-scroll-proportion="1.7080292" vertical-offset="676" max-vertical-offset="1768">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc;n#postService#0" expanded="false" />
           </folding>
@@ -801,7 +552,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/ROOT/js/ROOT_services.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18" max-vertical-offset="1300">
+        <state vertical-scroll-proportion="0.20437956" vertical-offset="18" max-vertical-offset="1300">
           <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding />
         </state>
@@ -809,11 +560,83 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/modules/search/js/search_controllers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16423358" vertical-offset="14" max-vertical-offset="702">
+        <state vertical-scroll-proportion="0.18978103" vertical-offset="0" max-vertical-offset="702">
           <caret line="6" column="28" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
           <folding>
             <element signature="n#!!doc;n#search_ctrl_search_index#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ROOT/js/ROOT.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="858">
+          <caret line="29" column="6" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/search/js/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="830" max-vertical-offset="1378">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/search/js/search_services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="624">
+          <caret line="4" column="9" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!doc;n#searchFactory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/answerviewer/js/answerviewer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="176" max-vertical-offset="780">
+          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/answerviewer/js/answerviewer_controllers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7080292" vertical-offset="0" max-vertical-offset="1768">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/answerviewer/js/answerviewer_services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18978103" vertical-offset="0" max-vertical-offset="1066">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!doc;n#answerviewerFactory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/ROOT/partials/landing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="606">
+          <caret line="0" column="27" selection-start-line="0" selection-start-column="27" selection-end-line="0" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15145631" vertical-offset="0" max-vertical-offset="2314">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+          <folding />
         </state>
       </provider>
     </entry>
