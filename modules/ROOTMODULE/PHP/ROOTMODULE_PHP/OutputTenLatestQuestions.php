@@ -1,6 +1,6 @@
 <?php
 
-include 'functions.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
 
 $numIDs = assignProperID(generateUniqueId() - 1);
 

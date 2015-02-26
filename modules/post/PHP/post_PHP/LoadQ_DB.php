@@ -1,6 +1,6 @@
 <?php
-  include 'functions.php';
-  include 'classes.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/classes.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
   
     $MrCleaner = new InputsCleanse(
     array(

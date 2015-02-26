@@ -17,14 +17,14 @@ function admin_config($routeProvider){
 						.when ('/admin/unanswered', {
 				templateUrl: 'modules/admin/partials/unanswered.html',
 				controller: 'admin_ctrl_unanswered as UnansweredCTRL'
-		})
+		});
 }
 
 		angular
 				.module ('admin', [])
 						.constant ('PHPadmin', 'admin_PHP/')
 						.config (admin_config)
-				.controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
+						.controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
 						.controller ('admin_ctrl_unanswered', admin_ctrl_unanswered);
 
 
