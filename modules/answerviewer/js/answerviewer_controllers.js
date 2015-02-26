@@ -2,15 +2,12 @@
  * Created by C-Styles on 2/26/15.
  */
 
-
 function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HOST, PHPanswerviewer){
 		$scope.author = "anyn";
 		$scope.answercontent = "content here";
 		$scope.questionid = $routeParams.qid;
-		alert ('id= ' + $scope.questionid);
+
 		$scope.postanswer = function () {
-				
-				
 				$scope.postedAns = {
 						"author": $scope.author,
 						"answercontent": $scope.answercontent,
@@ -36,19 +33,13 @@ function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HO
 }
 
 function answerviewer_ctrl_answerviewer_index ($scope, $routeParams, $log, $modal, answerviewerService) {
-		console.log (answerviewerService);
-		var Qview = this;
-		Qview.init = answerviewerService.activate ($routeParams.qid);
-		Qview.package = answerviewerService.data;
-		/************************/
-		/*         ACCORDIAN    */
-		/************************/
 
+		var answerviewerctrl = this;
+		answerviewerctrl.init = answerviewerService.activate ($routeParams.qid);
+		answerviewerctrl.package = answerviewerService.data;
 		$scope.oneAtATime = true;
-		/************************/
-		/*       ACCORDIAN       */
-		/************************/
-		Qview.addanswer = function (size) {
+
+		answerviewerctrl.addanswer = function (size) {
 				var modalInstance = $modal.open ({
 						templateUrl: 'modules/answerviewer/partials/answermodalcontent.html',
 						controller: 'ModalInstanceCtrl',

@@ -13,7 +13,7 @@
 		}
 
 
-		function appSourcesProvider (ROOT_HOST, PHPsearch) {
+		function searchProvider (ROOT_HOST, PHPsearch) {
 				function get () {
 						var sayit = function () {
 								alert ("isaidit");
@@ -40,9 +40,9 @@
 						.constant('ROOT_HOST','http://localhost/')
 						.constant('PHPsearch', 'modules/search/PHP/search_PHP/')
 						.config (search_config)
-						.provider ('appSourcesProvider', appSourcesProvider)
+						.provider ('searchProvider', searchProvider)
 						.controller ('search_ctrl_search_index', search_ctrl_search_index)
-						.factory('appSources', appSources);
+						.factory('searchFactory', searchFactory);
 
 
 }) ();
