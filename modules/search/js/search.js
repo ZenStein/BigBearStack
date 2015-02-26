@@ -10,10 +10,6 @@
 						templateUrl: 'modules/search/partials/search_index.html',
 						controller: 'search_ctrl_search_index as Search_IndexCTRL'
 				});
-				//				.when ('/search/:qid', {
-				//		templateUrl: 'modules/ROOTMODULE/partials/viewQ.html',
-				//		controller: 'Qviewctrl as Qviewerctrl'
-				//});
 		}
 
 
@@ -37,28 +33,7 @@
 						$get: get
 				};
 		}
-		//**********
-		//app.provider ("appSourcesProvider", ["ROOT_HOST", "ROOTMODULE_PHP", function (ROOT_HOST, ROOTMODULE_PHP) {
-		//		function get () {
-		//				var sayit = function () {
-		//						alert ("isaidit");
-		//				};
-		//				var urls = {
-		//						searchquery: ROOT_HOST + ROOTMODULE_PHP + "getSearchResults.php",
-		//						getQ: "otherQsearch"
-		//				};
-		//				return {
-		//						ROOT_HOST: ROOT_HOST,
-		//						sayit: sayit,
-		//						urls: urls
-		//				};
-		//		}
-		//
-		//		return {
-		//				$get: get
-		//		};
-		//}]);
-//**********
+
 
 		angular
 						.module ('search', [])
