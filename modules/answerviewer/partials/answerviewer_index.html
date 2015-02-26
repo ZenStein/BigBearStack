@@ -2,22 +2,22 @@
   <div class="row">
     <div class="col-sm-0 col-md-2 col-lg-2"></div> 
     <div class="col-sm-12 col-md-8 col-lg-8">
-      <p class="center"> <h2>{{ Qviewerctrl.package.question.question }}?</h2></p>
+      <p class="center"> <h2>{{ AnswerViewerCTRL.package.question.question }}?</h2></p>
     </div>
     <div class="col-sm-0 col-md-2 col-lg-2"></div>
     </div>
   <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12">
       <footer class="pull-right">
-        ~{{Qviewerctrl.package.question.author}}~&nbsp;&nbsp;
+        ~{{AnswerViewerCTRL.package.question.author}}~&nbsp;&nbsp;
         <cite title="Source Title">
-          {{Qviewerctrl.package.question.timestamp}}
+          {{AnswerViewerCTRL.package.question.timestamp}}
         </cite>
       </footer>
     </div> 
   </div>    
 </div>
-<div>Data = {{ Qviewerctrl.package.answers | json }}</div>
+<div>Data = {{ AnswerViewerCTRL.package.answers | json }}</div>
 <hr>
 <nav class="navbar navbar-inverse">
 <form class="navbar-form navbar-center" role="search">
@@ -25,14 +25,14 @@
     <input type="text" class="form-control" placeholder="More Questions?">
   </div>
   <button type="submit" class="btn btn-default">Go!</button>
-  <button ng-click="Qviewerctrl.addanswer();" class="btn btn-success">+</button>
+  <button ng-click="AnswerViewerCTRL.addanswer();" class="btn btn-success">+</button>
 <p class="navbar-text pull-right">Info on <a class="navbar-link">ThisQuestion</a></p>
 
 </form>
 </nav>
 
 <accordion close-others="oneAtATime">
-    <accordion-group is-open="isSelected "  ng-repeat="answer in Qviewerctrl.package.answers" >
+    <accordion-group is-open="isSelected "  ng-repeat="answer in AnswerViewerCTRL.package.answers" >
         <accordion-heading>
             <div ng-click="isSelected = !isSelected"> {{answer.content}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
         </accordion-heading>
