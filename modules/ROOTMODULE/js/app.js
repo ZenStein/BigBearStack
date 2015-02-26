@@ -4,81 +4,98 @@
 
 (function(){
 //this is a note on my local, checking to see if I am pushing correctly
-  var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap','admin']);
+
+  var app = angular.module('bigBearStack',['ngRoute','ui.bootstrap','admin', 'featured', 'search', 'post']);
   app.constant ('ROOT_HOST', 'http://localhost/');
   app.constant ('ROOTMODULE_PHP', 'modules/ROOTMODULE/PHP/ROOTMODULE_PHP/');
   app.config (['$routeProvider', function ($routeProvider) {
-    $routeProvider.
-        when ('/', {
-          templateUrl: 'modules/ROOTMODULE/partials/search.html',
-          controller: 'searchPanel as searchctrl'
-        }).
-        when ('/search', {
-          templateUrl: 'modules/ROOTMODULE/partials/search.html',
-          controller: 'searchPanel as searchctrl'
-        }).
-        when ('/search/:qid', {
+    $routeProvider
+        .when ('/', {
+      templateUrl: 'modules/ROOTMODULE/partials/landing.html',
+      controller: 'tester as Tester'
+    })
+        //.when ('/search', {
+        //  templateUrl: 'modules/ROOTMODULE/partials/search.html',
+        //  controller: 'searchPanel as searchctrl'
+        //})
+        .when ('/search/:qid', {
           templateUrl: 'modules/ROOTMODULE/partials/viewQ.html',
           controller: 'Qviewctrl as Qviewerctrl'
-        }).
-        when ('/post', {
-          templateUrl: 'modules/ROOTMODULE/partials/post.html',
-          controller: 'QformCtrl as askctrl'
-        }).
-        when ('/featured', {
-          templateUrl: 'modules/ROOTMODULE/partials/featured.html',
-          controller: 'featuredController as featctrl'
-        }).
-        otherwise ({
-          redirectTo: '/search'
+        })
+        //.when ('/post', {
+        //  templateUrl: 'modules/ROOTMODULE/partials/post_index.html',
+        //  controller: 'QformCtrl as askctrl'
+        //})
+        .otherwise ({
+          redirectTo: '/'
         });
   }]);
-
-  app.provider ("appSourcesPvdr", ["ROOT_HOST","ROOTMODULE_PHP", function (ROOT_HOST, ROOTMODULE_PHP) {
-    function get () {
-      var sayit = function () {
-        alert ("isaidit");
-      };
-      var urls = {
-      searchquery : ROOT_HOST + ROOTMODULE_PHP + "getSearchResults.php",
-              getQ : "otherQsearch"
-                    };
-      return {
-      ROOT_HOST: ROOT_HOST,
-         sayit : sayit,
-           urls : urls
-                 };
-    }
-  return {
-     $get : get
-           };
+  app.controller('tester', [function (){
+    this.mypersonaltest = {};
   }]);
-  app.factory ("appSources", ["appSourcesPvdr", '$http', function (appSourcesPvdr, $http) {
-    appSourcesPvdr.getQsFromSearch = function (form) {
-      var req = {
-        method: 'POST',
-        url: appSourcesPvdr.urls.searchquery,
-        headers: {'Content-Type': 'application/json'},
-        params: {'querystring': form.query}
-      };
-        return $http(req);
-    };
+  //app.provider ("appSourcesPvdr", ["ROOT_HOST", "ROOTMODULE_PHP", function (ROOT_HOST, ROOTMODULE_PHP) {
+  //  function get () {
+  //    var sayit = function () {
+  //      alert ("isaidit");
+  //    };
+  //    var urls = {
+  //      searchquery: ROOT_HOST + ROOTMODULE_PHP + "getSearchResults.php",
+  //      getQ: "otherQsearch"
+  //    };
+  //    return {
+  //      ROOT_HOST: ROOT_HOST,
+  //      sayit: sayit,
+  //      urls: urls
+  //    };
+  //  }
+  //
+  //  return {
+  //    $get: get
+  //  };
+  //}]);
+  //app.factory ("appSources", ["appSourcesPvdr", '$http', function (appSourcesPvdr, $http) {
+  //  appSourcesPvdr.getQsFromSearch = function (form) {
+  //    var req = {
+  //      method: 'POST',
+  //      url: appSourcesPvdr.urls.searchquery,
+  //      headers: {'Content-Type': 'application/json'},
+  //      params: {'querystring': form.query}
+  //    };
+  //      return $http(req);
+  //  };
+  //
+  //  return appSourcesPvdr;
+  //}]);
 
-    return appSourcesPvdr;
-  }]);
-  app.service('TagService', ['$http', 'ROOT_HOST', 'ROOTMODULE_PHP', function($http, ROOT_HOST, ROOTMODULE_PHP){
+  //app.controller('searchPanel', ['appSources', 'TagService', function(appSources, TagService){
+  //  var searchresults = this;
+  //  this.Tags = TagService.grabAllTags();
+  //  this.tagFilternames = TagService.tagFilters.filterNames;
+  //  this.getQueryQs = function(form){
+  //
+  //    appSources.getQsFromSearch (form)
+  //        .success(function(result){
+  //          console.log(result);
+  //         searchresults.data = result;
+  //        });
+  //  };
+  //  this.setUnsetTagFilt = function (obj) {
+  //    TagService.setUnsetTagFilt(obj);
+  //  };
+  //}]);
+  app.service ('TagService', ['$http', 'ROOT_HOST', 'ROOTMODULE_PHP', function ($http, ROOT_HOST, ROOTMODULE_PHP) {
     this.tagFilters = {filterNames: []};
-    this.grabAllTags = function(){
+    this.grabAllTags = function () {
       var allTags = this;
       var req = {
-        method :  'POST',
-        url    :  ROOT_HOST + ROOTMODULE_PHP + 'grabtags.php',
+        method: 'POST',
+        url: ROOT_HOST + ROOTMODULE_PHP + 'grabtags.php',
         headers: {'Content-Type': 'application/json'}
       };
-      $http(req)
-      .success(function(jsondata){
-        allTags.tagdata = jsondata;
-      });
+      $http (req)
+          .success (function (jsondata) {
+            allTags.tagdata = jsondata;
+          });
       return allTags;
 
     };
@@ -108,98 +125,63 @@
       return "Error: Conditions were supposed to have been met";
     };
   }]);
-  app.controller('searchPanel', ['appSources', 'TagService', function(appSources, TagService){
-    var searchresults = this;
-    this.Tags = TagService.grabAllTags();
-    this.tagFilternames = TagService.tagFilters.filterNames;
-    this.getQueryQs = function(form){
-
-      appSources.getQsFromSearch (form)
-          .success(function(result){
-            console.log(result);
-           searchresults.data = result;
-          });
-    };
-    this.setUnsetTagFilt = function (obj) {
-      TagService.setUnsetTagFilt(obj);
-    };
-  }]);
-  app.controller('QformCtrl', ['$http', 'TagService', 'ROOT_HOST','ROOTMODULE_PHP', function($http, TagService, ROOT_HOST, ROOTMODULE_PHP) {
-    var postQ = this;
-    this.Tags = TagService.grabAllTags();
-    this.user = {"question":/*searchObject.query*/"My Great Q","author":"Auth"};
-    var tagToggler = {"class1":false,"class2":false,"class3":true};
-
-
-    var objValsToArr = function(ArrObj){
-      var TagString = "";
-      var numObj=ArrObj.length;
-      for(var x=0;x<numObj;x++){
-        if(ArrObj[x].hasOwnProperty('selected') && ArrObj[x].selected === true){
-          TagString += ArrObj[x].html + ",";
-        }
-      }
-      return TagString.slice(0, -1);
-    };
-
-    function reset_tags () {
-      var numObj = postQ.Tags.tagdata.length;
-      for (var x = 0; x < numObj; x++) {
-        if ( postQ.Tags.tagdata[x].hasOwnProperty ('selected') && postQ.Tags.tagdata[x].selected === true ) {
-          postQ.Tags.tagdata[x].selected = false;
-        }
-      }
-    }
-    function resetform () {
-      postQ.user.question = "";
-      postQ.user.author = "";
-      reset_tags();
-      alert("Thank you for your submitting a question!");
-    }
-    this.postThisQ = function(form){
-
-      this.TagsStringhtml = objValsToArr(this.Tags.tagdata);
-      this.postedQ = {  
-        'question' : form.Qform.question.$viewValue,
-        'tags'     : this.TagsStringhtml,
-        'author'   : form.Qform.author.$viewValue
-      };
-      var req = { 
-        method :  'POST',
-        url    :  ROOT_HOST + ROOTMODULE_PHP + 'LoadQ_DB.php',
-        headers: {'Content-Type' : 'application/json'},
-        data   : {'test' : 'thisismytesttest'},
-        params : this.postedQ 
-      };
-      console.log(JSON.stringify(form.Qform.question));
-      $http(req)
-      .success(function(data){
-            console.log("here");
-            resetform();
-        console.log(data);
-      })
-    };
-
-  }]);
-  app.controller('APlaceholder1', [function() {
-    var pHolder = {"A":"1","B":"2","C":"3"};
-  }]);
-  app.controller('featuredController', [function() {
-    this.items = ['Item 1', 'Item 2', 'Item 3'];
-    this.addItem = function() {
-      var newItemNo = this.items.length + 1;
-      this.items.push('Item ' + newItemNo);
-    };
-
-  this.status = {
-    isFirstOpen: true,
-    isFirstDisabled: false
-  };
-  }]);
-  app.controller('CPlaceholder2', [function() {
-    var pHolder = {"A":"1","B":"2","C":"3"};
-  }]);
-
+  //app.controller('QformCtrl', ['$http', 'TagService', 'ROOT_HOST','ROOTMODULE_PHP', function($http, TagService, ROOT_HOST, ROOTMODULE_PHP) {
+  //  var postQ = this;
+  //  this.Tags = TagService.grabAllTags();
+  //  this.user = {"question":/*searchObject.query*/"My Great Q","author":"Auth"};
+  //  var tagToggler = {"class1":false,"class2":false,"class3":true};
+  //
+  //
+  //  var objValsToArr = function(ArrObj){
+  //    var TagString = "";
+  //    var numObj=ArrObj.length;
+  //    for(var x=0;x<numObj;x++){
+  //      if(ArrObj[x].hasOwnProperty('selected') && ArrObj[x].selected === true){
+  //        TagString += ArrObj[x].html + ",";
+  //      }
+  //    }
+  //    return TagString.slice(0, -1);
+  //  };
+  //
+  //  function reset_tags () {
+  //    var numObj = postQ.Tags.tagdata.length;
+  //    for (var x = 0; x < numObj; x++) {
+  //      if ( postQ.Tags.tagdata[x].hasOwnProperty ('selected') && postQ.Tags.tagdata[x].selected === true ) {
+  //        postQ.Tags.tagdata[x].selected = false;
+  //      }
+  //    }
+  //  }
+  //  function resetform () {
+  //    postQ.user.question = "";
+  //    postQ.user.author = "";
+  //    reset_tags();
+  //    alert("Thank you for your submitting a question!");
+  //  }
+  //  this.postThisQ = function(form){
+  //
+  //    this.TagsStringhtml = objValsToArr(this.Tags.tagdata);
+  //    this.postedQ = {
+  //      'question' : form.Qform.question.$viewValue,
+  //      'tags'     : this.TagsStringhtml,
+  //      'author'   : form.Qform.author.$viewValue
+  //    };
+  //    var req = {
+  //      method :  'POST',
+  //      url    :  ROOT_HOST + ROOTMODULE_PHP + 'LoadQ_DB.php',
+  //      headers: {'Content-Type' : 'application/json'},
+  //      data   : {'test' : 'thisismytesttest'},
+  //      params : this.postedQ
+  //    };
+  //    console.log(JSON.stringify(form.Qform.question));
+  //    $http(req)
+  //    .success(function(data){
+  //          console.log("here");
+  //          resetform();
+  //      console.log(data);
+  //    })
+  //  };
+  //
+  //}]);
   app.factory ('Qviewfactory', ['$http', 'ROOT_HOST', 'ROOTMODULE_PHP', function ($http, ROOT_HOST, ROOTMODULE_PHP) {
 
 
