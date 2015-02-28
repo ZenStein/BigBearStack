@@ -10,9 +10,14 @@ function admin_ctrl_admin_index () {
 
 function admin_ctrl_unanswered (ROOT_HOST, PHPadmin) {
 		var thisistest = {};
-
 		thisistest.testname = ROOT_HOST + PHPadmin;
 		this.tosee = thisistest.testname;
+}
+
+function admin_ctrl_createanswer($routeParams){
+		this.tester = $routeParams.qid_unanswered;
+		alert('firedddd');
+		alert(this.tester);
 }
 
 
