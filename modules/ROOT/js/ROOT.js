@@ -24,7 +24,8 @@
 						.constant ('ROOT_HOST', 'http://localhost/')
 						.constant ('ROOT_PHP', 'modules/ROOT/PHP/ROOT_PHP/')
 						.config (ROOT_config)
-						.service ('ROOTService', ROOTService);
+						.service ('ROOTService', ROOTService)
+						.controller('tester', tester);
 
 
 }) ();

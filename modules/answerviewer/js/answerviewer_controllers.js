@@ -3,11 +3,13 @@
  */
 
 function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HOST, PHPanswerviewer){
-		$scope.author = "anyn";
-		$scope.answercontent = "content here";
+
+		$scope.author = "SomeDude";
+		$scope.answercontent = "Wisdom";
 		$scope.questionid = $routeParams.qid;
 
 		$scope.postanswer = function () {
+				alert('hitagain');
 				$scope.postedAns = {
 						"author": $scope.author,
 						"answercontent": $scope.answercontent,
@@ -24,7 +26,7 @@ function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HO
 								.success (function (data) {
 						console.log (data);
 				});
-				$modalInstance.close ($scope.selected.item);
+				$modalInstance.close();
 		};
 		
 		$scope.cancel = function () {
@@ -41,7 +43,7 @@ function answerviewer_ctrl_answerviewer_index ($scope, $routeParams, $log, $moda
 
 		answerviewerctrl.addanswer = function (size) {
 				var modalInstance = $modal.open ({
-						templateUrl: 'modules/answerviewer/partials/answermodalcontent.html',
+						templateUrl: 'http://localhost/modules/answerviewer/partials/answermodalcontent.html',
 						controller: 'ModalInstanceCtrl',
 						size: size,
 						resolve: {

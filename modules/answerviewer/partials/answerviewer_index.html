@@ -36,8 +36,17 @@
         <accordion-heading>
             <div ng-click="isSelected = !isSelected"> {{answer.content}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
         </accordion-heading>
-        <div class="well well-sm">
-          <a ><h3>here is the answer!{{ answer.content }}</h3></a><br>
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="http://localhost/images/angular-pic.jpeg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                ...
+            </div>
         </div>
+
     </accordion-group>
 </accordion>
