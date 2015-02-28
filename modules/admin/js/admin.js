@@ -15,11 +15,11 @@ function admin_config($routeProvider){
 				controller: 'admin_ctrl_admin_index as Admin_IndexCTRL'
 		})
 						.when ('/admin/unanswered', {
-				templateUrl: 'modules/admin/partials/unanswered.html',
+				templateUrl: 'modules/admin/partials/admin_unanswered.html',
 				controller: 'admin_ctrl_unanswered as UnansweredCTRL'
 		})
 						.when ('/admin/unanswered/:qid_unanswered/createanswer', {
-				templateUrl: 'modules/admin/partials/createanswer.html',
+				templateUrl: 'modules/admin/partials/admin_createanswer.html',
 				controller: 'admin_ctrl_createanswer as CreateAnswerCTRL'
 		});
 }
