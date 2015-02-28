@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h3>CreateAnswer</h3>
+
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-sm-0 col-md-2 col-lg-2"></div>
+        <div class="col-sm-12 col-md-8 col-lg-8">
+            <p class="center">
+
+            <h2>this.question?</h2></p>
+        </div>
+        <div class="col-sm-0 col-md-2 col-lg-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <footer class="pull-right">
+                ~this.author~&nbsp;&nbsp;
+            </footer>
+        </div>
+    </div>
+</div>
+<accordion close-others="oneAtATime">
+    <accordion-group is-open="isSelected " >
+        <accordion-heading>
+            <div ng-click="isSelected = !isSelected"> answercontent goes here <i class="pull-right glyphicon"
+                                                                            ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
+        </accordion-heading>
+        <div class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="http://www.poolpickem.com/stackapp/images/angular-pic.jpeg" alt="...">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                ...
+            </div>
+        </div>
+
+    </accordion-group>
+</accordion>
+<div>admin answer controls</div>
+</body>
+</html>
