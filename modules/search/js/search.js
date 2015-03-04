@@ -12,7 +12,8 @@
 				});
 		}
 
-		function searchProvider (ROOT_HOST, PHPsearch) {
+		function searchProvider (/*ROOT_HOST, PHPsearch*/) {
+				alert('searchProvider');
 				function get () {
 						var sayit = function () {
 								alert ("isaidit");
@@ -40,5 +41,6 @@
 						.config (search_config)
 						.provider ('searchProvider', searchProvider)
 						.controller ('search_ctrl_search_index', search_ctrl_search_index)
-						.factory('searchFactory', searchFactory);
+					//	.factory('searchFactory', searchFactory);
+						.service('searchService', searchService);
 })();

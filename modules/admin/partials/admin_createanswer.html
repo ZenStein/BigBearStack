@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
+
 <body>
 <h3>CreateAnswer</h3>
 
@@ -28,23 +23,43 @@
 <accordion close-others="oneAtATime">
     <accordion-group is-open="isSelected " >
         <accordion-heading>
-            <div ng-click="isSelected = !isSelected"> answercontent goes here <i class="pull-right glyphicon"
-                                                                            ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
+            <div ng-click="isSelected = !isSelected" style="font-size: 25px;"> answer header goes here <i class="pull-right glyphicon"
+                                                                            ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
         </accordion-heading>
-        <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="http://www.poolpickem.com/stackapp/images/angular-pic.jpeg" alt="...">
-                </a>
+        <p class="lead">answer content and or answer body goes here.</p>
+
+        <div>
+            <div>
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in slides" active="slide.active">
+                        <img ng-src="{{slide.image}}" style="margin:auto;">
+
+                        <div class="carousel-caption">
+                            <h4>Slide {{$index}}</h4>
+                            <p>{{slide.text}}</p>
+                        </div>
+                    </slide>
+                </carousel>
             </div>
-            <div class="media-body">
-                <h4 class="media-heading">Media heading</h4>
-                ...
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
+                </div>
+                <div class="col-md-6">
+                    Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
+                    <br/>Enter a negative number or 0 to stop the interval.
+                </div>
             </div>
         </div>
 
+
+
     </accordion-group>
 </accordion>
-<div>admin answer controls</div>
+<div>
+    admin answer controls
+</div>
+
+
 </body>
 </html>

@@ -2,6 +2,9 @@
  * Created by C-Styles on 2/25/15.
  */
 function ROOTService ($http, ROOT_HOST, ROOT_PHP) {
+	alert('ROOTService Init');
+		var ROOTService = this;
+		////this.postQinit = {"question": "SomeDumbQuestionFromService", "author": "SomeDumbGuy"};
 		this.tagFilters = {filterNames: []};
 		this.grabAllTags = function () {
 				var allTags = this;
@@ -17,6 +20,30 @@ function ROOTService ($http, ROOT_HOST, ROOT_PHP) {
 				return allTags;
 
 		};
+		/***********************************************/
+		/***********************************************/
+		/***********************************************/
+//var x = {};
+//	//	this.allTags = {};
+//				var req = {
+//						method: 'POST',
+//						url: ROOT_HOST + ROOT_PHP + 'grabtags.php',
+//						headers: {'Content-Type': 'application/json'}
+//				};
+//				$http (req)
+//								.success (function (jsondata) {
+//						ROOTService.tagdata = jsondata;
+//				});
+//
+//		this.grabAllTags = function () {
+//console.log(ROOTService.tagdata);
+//				return ROOTService.tagdata;
+//
+//		};
+
+		/***********************************************/
+		/***********************************************/
+		/***********************************************/
 		this.setUnsetTagFilt = function (obj) { //alert(typeof obj)
 				var tagNum = this.tagFilters.filterNames.length;
 				var handl = this.tagFilters.filterNames;
@@ -42,4 +69,12 @@ function ROOTService ($http, ROOT_HOST, ROOT_PHP) {
 				console.log ("Error: obj= " + obj);
 				return "Error: Conditions were supposed to have been met";
 		};
+}
+
+function ROOTFactory (ROOTProvider){
+		alert ('ROOTFactory');
+		ROOTProvider.getallthetags = function(){
+				alert('youcalled getallthetags');
+		};
+return ROOTProvider;
 }

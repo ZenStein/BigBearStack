@@ -14,10 +14,23 @@ function admin_ctrl_unanswered (ROOT_HOST, PHPadmin) {
 		this.tosee = thisistest.testname;
 }
 
-function admin_ctrl_createanswer($routeParams){
-		this.tester = $routeParams.qid_unanswered;
-		alert('firedddd');
-		alert(this.tester);
+function admin_ctrl_createanswer($routeParams, $scope) {
+
+
+		$scope.myInterval = 0;
+		var slides = $scope.slides = [];
+		$scope.addSlide = function (id) {
+				var newWidth = 300 + slides.length + 1;
+				//alert('newWidth =  ' + newWidth);
+				slides.push ({
+						image: 'http://localhost/images/img' + id + '.png',
+						text: ['More', 'Extra', 'Lots of', 'Surplus'][slides.length % 4] + ' ' +
+						['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
+				});
+		};
+		for (var i = 2; i < 4; i++) {
+				$scope.addSlide (i);
+		}
 }
 
 
