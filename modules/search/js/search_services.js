@@ -18,45 +18,41 @@
 //}
 
 function searchService($http, ROOT_HOST, PHPsearch ) {
-		return {
-				searchquery: searchquery,
-				getTags: getTags,
-				gettagFilters: gettagFilters,
-				settagFilters: settagFilters
-		};
+     return {
+		searchquery: searchquery,
+		     getTags: getTags,
+  gettagFilters: gettagFilters,
+		 settagFilters: settagFilters
+																 };
 
-		var tagfilters = [{name: 'Kayaking', isSelected: FALSE}, {'name': 'Hiking', isSelected: FALSE}];
+		var tagfilters = [{name: 'Kayaking', isSelected: FALSE},{'name': 'Hiking', isSelected: FALSE}];
 
 		function searchquery (inputquerystring) {
 				var req = {
-						method: 'POST',
-						url: ROOT_HOST + PHPsearch + 'getSearchResults.php',
-						headers: {'Content-Type': 'application/json'},
-						params: {'querystring': inputquerystring}
-				};
+						   method: 'POST',
+						       url: ROOT_HOST + PHPsearch + 'getSearchResults.php',
+						    headers: {'Content-Type': 'application/json'},
+					      	params: {'querystring': inputquerystring}
+				               };
 				return $http (req);
 		}
-
 		function getTags () {
 		}
-
-		function gettagFilters(){}
-
+		function gettagFilters(){
+		}
 		function settagFilters (Tags) {
 				var TagArr = [];
 				var numObj = Tags.length;
-				console.log (numObj);
-
-						for (var x = 0; x < numObj; x++) {
+				for (var x = 0; x < numObj; x++) {
 								if ( Tags[x].hasOwnProperty ('selected') && Tags[x].selected === true ) {
 										TagArr.push (Tags[x].html);
 								}
 						}
-						var thefilters = (TagArr.length > 0)  ? TagArr :  false;
-						console.log(thefilters);
-
+				var thefilters = (TagArr.length > 0)  ? TagArr :  false;
+				console.log(thefilters);
 				return thefilters;
 		}
+
 }
 
 

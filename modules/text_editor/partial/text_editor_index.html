@@ -1,0 +1,31 @@
+ <!doctype html>
+<html>
+  <head>
+    <script src="//tinymce.cachefly.net/4.0/tinymce.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+    <script type="text/javascript" src="tinymce.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+    <script src="example.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+<div ng-controller="TabsDemoCtrl">
+
+
+    <form name="campaignForm" class="form-horizontal" novalidate >
+
+    <tabset>
+      <tab heading="first">
+          <textarea data-ui-tinymce data-ng-model="modal.one"></textarea>
+      </tab>
+
+      <tab heading="second">
+          <textarea data-ui-tinymce data-ng-model="modal.two"></textarea>
+      </tab>
+    </tabset>
+    </form>
+
+</div>
+  </body>
+</html>

@@ -1,14 +1,18 @@
 
 <body>
+        <style>
+        .carousel-control{
+            display: none;
+        }
+        </style>
+
 <h3>CreateAnswer</h3>
 
 <div class="jumbotron">
     <div class="row">
         <div class="col-sm-0 col-md-2 col-lg-2"></div>
         <div class="col-sm-12 col-md-8 col-lg-8">
-            <p class="center">
-
-            <h2>this.question?</h2></p>
+            <p class="center"><h2>this.question?</h2></p>
         </div>
         <div class="col-sm-0 col-md-2 col-lg-2"></div>
     </div>
@@ -21,18 +25,17 @@
     </div>
 </div>
 <accordion close-others="oneAtATime">
-    <accordion-group is-open="isSelected " >
+    <accordion-group is-open="preview_isSelected" ng-init="preview_isSelected = true">
         <accordion-heading>
-            <div ng-click="isSelected = !isSelected" style="font-size: 25px;"> answer header goes here <i class="pull-right glyphicon"
-                                                                            ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
+            <div ng-click="preview_isSelected = !preview_isSelected"  style="height: 30px; font-size: 25px;"> {{CreateAnswerCTRL.input.title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
         </accordion-heading>
-        <p class="lead">answer content and or answer body goes here.</p>
-
-        <div>
-            <div>
+        <p class="lead">{{CreateAnswerCTRL.input.headline}}</p><br><br>
+        <div ng-controller="CarouselDemoCtrl">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
                 <carousel interval="myInterval">
                     <slide ng-repeat="slide in slides" active="slide.active">
-                        <img ng-src="{{slide.image}}" style="margin:auto;">
+                        <img ng-src="{{slide.image}}" style="max-height:300px;margin:auto;">
 
                         <div class="carousel-caption">
                             <h4>Slide {{$index}}</h4>
@@ -41,25 +44,57 @@
                     </slide>
                 </carousel>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <button type="button" class="btn btn-info" ng-click="addSlide()">Add Slide</button>
-                </div>
-                <div class="col-md-6">
-                    Interval, in milliseconds: <input type="number" class="form-control" ng-model="myInterval">
-                    <br/>Enter a negative number or 0 to stop the interval.
-                </div>
-            </div>
         </div>
-
-
-
     </accordion-group>
 </accordion>
-<div>
-    admin answer controls
+
+<div class="row" id="editorcontainer">
+    <div class="col-sm-11 col-md-11 col-lg-11" style="margin-left: 5%;">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="height: 50px;text-align: center;height: auto">
+                Editors  Tools
+            </div>
+        <div class="panel-body" style="height: auto; min-height: 300px;">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+              <h3 class="panel-title"><input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.title" placeholder="Title" aria-describedby="sizing-addon1"></h3>
+              </div>
+                    <div class="panel-body" style=" min-height: 250px;">
+                        <div class="input-group input-group-lg">
+                          <input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.headline" placeholder="Headline" aria-describedby="sizing-addon1">
+                        </div>
+                          <br><br>
+                          <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" ng-init="isCollapsed = true">ImageUploader</button>
+                          <hr>
+                        <div collapse="isCollapsed">
+                            <div class="well well-lg">
+                                 <form novalidate>
+                                     <div style="border: dotted thick lightgray; background-color: ghostwhite; padding: 20px">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-8 col-md-offset-2">
+                                               <img ng-repeat="names in CreateAnswerCTRL.answerimages" ng-src="http://localhost/images/{{names.imagename}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail">
+                                            </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2">
+                                                 <label class="custom-file-upload">
+                                                     <input type="file" name="myfile"
+                                                            onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                                                     +Imagesss
+                                                 </label>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </form>
+                            </div>
+                        </div>
+                    </div>
+              <div class="panel-footer"> Panel footer </div>
+             </div>
+        </div>
+     </div>
+    </div>
 </div>
-
-
 </body>
-</html>
+
+

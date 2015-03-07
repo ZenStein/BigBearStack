@@ -3,12 +3,13 @@
  */
 
 function search_ctrl_search_index ( searchService, postService) {
-		alert('SearchController init');
+	//	alert('SearchController init');
 		var searchctrl = this;
 		searchctrl.inputquerystring = {string:''};
 		searchctrl.resultdata = [];
 		searchctrl.Tags = [];
 		searchctrl.Tagfilters = [];
+
 		postService.getalltags ().then(function(result){
 				searchctrl.Tags = result;
 		});

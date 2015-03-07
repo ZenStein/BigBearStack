@@ -13,25 +13,25 @@
 		}
 
 		function searchProvider (/*ROOT_HOST, PHPsearch*/) {
-				alert('searchProvider');
+				return {
+						  $get: get
+				         };
+
 				function get () {
-						var sayit = function () {
-								alert ("isaidit");
-						};
-						var urls = {
-								searchquery: ROOT_HOST + PHPsearch + "getSearchResults.php",
-								getQ: "otherQsearch"
-						};
-						return {
-								ROOT_HOST: ROOT_HOST,
-								sayit: sayit,
-								urls: urls
-						};
+				//		var sayit = function () {
+				//		alert ("isaidit");
+				//};
+				//		var urls = {
+				//				searchquery: ROOT_HOST + PHPsearch + "getSearchResults.php",
+				//				        getQ: "otherQsearch"
+				//		               };
+				//		return {
+				//				ROOT_HOST: ROOT_HOST,
+				//				     sayit: sayit,
+				//			       	urls: urls
+				//		              };
 				}
 
-				return {
-						$get: get
-				};
 		}
 
 		angular

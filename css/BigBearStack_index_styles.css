@@ -2,7 +2,9 @@ QresultsView@charset "UTF-8";
 /* CSS Document */
 
 .nav, .pagination, .carousel, .panel-title, a{ cursor: pointer; }
-a{top:0px;}
+a{
+    top: 0px;
+}
 .bold {
     font-weight: bold;
 }
@@ -199,5 +201,16 @@ a:visited{
 .my-form.ng-invalid {
   background: red;
   color:white;
-} 
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
 
