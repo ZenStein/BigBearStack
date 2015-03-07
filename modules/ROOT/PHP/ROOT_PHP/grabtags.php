@@ -11,7 +11,7 @@
     $class = $r['class'];
     $html  = $r['html'];
     $glyph =$r['glyph'];
-    $jsonArr[$i] = array("class"=>$class, "html"=>$html, "glyph"=>$glyph);  
+    $jsonArr[$i] = array("class"=>$class, "html"=>$html, "glyph"=>$glyph, "selected"=>FALSE);
     $i++;
   }
   

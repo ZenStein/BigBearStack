@@ -17,6 +17,6 @@
 						.constant('PHPpost','modules/post/PHP/post_PHP/')
 						.config (post_config)
 		    .controller ('post_ctrl_post_index', post_ctrl_post_index)
-						.service('postService', postService);
+					.service('postService', postService);
 
 })();

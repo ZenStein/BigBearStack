@@ -2,20 +2,26 @@
  * Created by C-Styles on 2/25/15.
  */
 
-function search_ctrl_search_index (searchFactory, ROOTService) {
-				var searchresults = this;
-				this.Tags = ROOTService.grabAllTags ();
-				this.tagFilternames = ROOTService.tagFilters.filterNames;
-				this.getQueryQs = function (form) {
+function search_ctrl_search_index ( searchService, postService) {
+	//	alert('SearchController init');
+		var searchctrl = this;
+		searchctrl.inputquerystring = {string:''};
+		searchctrl.resultdata = [];
+		searchctrl.Tags = [];
+		searchctrl.Tagfilters = [];
 
-						searchFactory.getQsFromSearch (form)
-										.success (function (result) {
-												console.log (result);
-												searchresults.data = result;
-										});
-				};
-				this.setUnsetTagFilt = function (obj) {
-						ROOTService.setUnsetTagFilt (obj);
+		postService.getalltags ().then(function(result){
+				searchctrl.Tags = result;
+		});
+		searchctrl.settagFilters  = function() {
+				searchctrl.Tagfilters = searchService.settagFilters(searchctrl.Tags);
+		}
+		searchctrl.getQueryQs = function () {
+				searchService.searchquery (searchctrl.inputquerystring.string)
+								.then (function (result) {
+										console.log (result);
+										searchctrl.resultdata = result;
+								});
 				};
 }
 

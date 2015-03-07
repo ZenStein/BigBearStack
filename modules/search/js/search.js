@@ -12,25 +12,26 @@
 				});
 		}
 
-		function searchProvider (ROOT_HOST, PHPsearch) {
+		function searchProvider (/*ROOT_HOST, PHPsearch*/) {
+				return {
+						  $get: get
+				         };
+
 				function get () {
-						var sayit = function () {
-								alert ("isaidit");
-						};
-						var urls = {
-								searchquery: ROOT_HOST + PHPsearch + "getSearchResults.php",
-								getQ: "otherQsearch"
-						};
-						return {
-								ROOT_HOST: ROOT_HOST,
-								sayit: sayit,
-								urls: urls
-						};
+				//		var sayit = function () {
+				//		alert ("isaidit");
+				//};
+				//		var urls = {
+				//				searchquery: ROOT_HOST + PHPsearch + "getSearchResults.php",
+				//				        getQ: "otherQsearch"
+				//		               };
+				//		return {
+				//				ROOT_HOST: ROOT_HOST,
+				//				     sayit: sayit,
+				//			       	urls: urls
+				//		              };
 				}
 
-				return {
-						$get: get
-				};
 		}
 
 		angular
@@ -40,5 +41,6 @@
 						.config (search_config)
 						.provider ('searchProvider', searchProvider)
 						.controller ('search_ctrl_search_index', search_ctrl_search_index)
-						.factory('searchFactory', searchFactory);
+					//	.factory('searchFactory', searchFactory);
+						.service('searchService', searchService);
 })();

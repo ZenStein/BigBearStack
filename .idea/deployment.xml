@@ -1,23 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="poolpickem">
-    <serverData>
-      <paths name="poolpickem">
-        <serverdata>
-          <mappings>
-            <mapping deploy="/stackapp" local="$PROJECT_DIR$" web="/" />
-          </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/PHP_includes" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules/admin/PHP" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules/answerviewer/PHP" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules/featured/PHP" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules/post/PHP" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules/ROOT/PHP" />
-            <excludedPath local="true" path="$PROJECT_DIR$/modules/search/PHP" />
-          </excludedPaths>
-        </serverdata>
-      </paths>
-    </serverData>
-  </component>
+  <component name="PublishConfigData" serverName="poolpickem" />
 </project>

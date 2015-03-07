@@ -18,11 +18,33 @@
 				});
 		}
 
+		function ROOTProvider (){
+   //alert('ROOTProvider');
+    function get(){
+      //var callROOTProvider = function () {
+				   // alert ("callROOTProvider");
+      //};
+      //var urls = {
+		     // TESTROOT:"http://localhost",
+		     // search:"searchQuery",
+		     // getSomething:"blahblah"
+      //};
+      //return {
+		     // callROOTProvider: callROOTProvider,
+		     // urls:urls
+      //};
+
+    }
+				 return {
+						 $get: get
+				 };
+		}
 
 		angular
-						.module ('ROOT', ['ngRoute', 'ui.bootstrap', 'admin', 'featured', 'search', 'post', 'answerviewer'])
+						.module ('ROOT', ['ngRoute', 'ui.bootstrap', 'admin', 'featured', 'search', 'post', 'answerviewer','ngTouch'])
 						.constant ('ROOT_HOST', 'http://localhost/')
 						.constant ('ROOT_PHP', 'modules/ROOT/PHP/ROOT_PHP/')
+						.provider('ROOTProvider', ROOTProvider)
 						.config (ROOT_config)
 						.service ('ROOTService', ROOTService)
 						.controller('tester', tester);

@@ -3,7 +3,7 @@
     <span class="input-group-addon" id="sizing-addon1">
       <span class="glyphicon glyphicon-search"></span>
     </span>
-        <input type="text" name="Qstring" ng-model="query" class="form-control"
+        <input type="text" name="Qstring" ng-model="Search_IndexCTRL.inputquerystring.string" class="form-control"
                placeholder="So what would you like to know ???" aria-describedby="sizing-addon1">
 
     </div>
@@ -13,21 +13,24 @@
         <span class="glyphicon glyphicon-triangle-top" ng-show="isCollapsed"></span>
     </button>
     &nbsp;&nbsp;
-    <div ng-repeat="x in Search_IndexCTRL.Tags.tagdata" style="display:inline;">
-        <label class="btn btn-{{x.class}} btn-xs" ng-model="x.selected"
-               ng-click="Search_IndexCTRL.setUnsetTagFilt(x.html); x.selected = !x.selected" ng-show="x.selected">
+        <label ng-repeat="x in Search_IndexCTRL.Tags" class="btn btn-{{x.class}} btn-xs" ng-model="x.selected" ng-show="x.selected"
+               ng-change="Search_IndexCTRL.settagFilters();" btn-checkbox>
             {{x.html}}
         </label>
-    </div>
+
     <div class="row">
         <div class="col-lg-2" style="text-align:center;">
             <div collapse="!isCollapsed">
                 Filter; By; Tags:<br>
-                <label ng-repeat="y in Search_IndexCTRL.Tags.tagdata" class="btn btn-{{y.class}} btn-xs" ng-model="y.selected"
-                       ng-disabled="Search_IndexCTRL.tagFilternames.length >= 2" ng-click="Search_IndexCTRL.setUnsetTagFilt(y.html)"
-                       btn-checkbox>
+                <label ng-repeat="y in Search_IndexCTRL.Tags" class="btn btn-{{y.class}} btn-xs" ng-model="y.selected"
+                       ng-change="Search_IndexCTRL.settagFilters();" btn-checkbox>
                     {{y.html}}
                 </label>
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -35,7 +38,7 @@
         <div class="col-sm-2 col-md-3 col-lg-3"></div>
         <div class="col-sm-8 col-md-6 col-lg-6">
             <input type="submit" class="btn btn-primary btn-lg btn-block" value="Ask!!"
-                   ng-click="Search_IndexCTRL.getQueryQs(this)"/>
+                   ng-click="Search_IndexCTRL.getQueryQs()"/>
         </div>
         <div class="col-sm-2 col-md-3 col-lg-3"></div>
     </div>
@@ -45,9 +48,11 @@
 <div class="row">
     <div class="col-lg-12" style="text-align:center;">
         <div class="well well-sm"
-             ng-repeat="data in Search_IndexCTRL.data | filter:Search_IndexCTRL.tagFilternames[0] | filter:Search_IndexCTRL.tagFilternames[1]">
-            <a href="#/search/{{data.qid}}"><h3>{{data.question | uppercase}} ?</h3></a><br>
-            <div ng-repeat="tag in data.tags" style="display:inline;">
+             ng-repeat="result in Search_IndexCTRL.resultdata.data | filter:Search_IndexCTRL.Tagfilters[0]
+             | filter:Search_IndexCTRL.Tagfilters[1] | filter:Search_IndexCTRL.Tagfilters[2] |
+               filter:Search_IndexCTRL.Tagfilters[3] | filter:Search_IndexCTRL.Tagfilters[4]">
+            <a href="#/search/{{result.qid}}"><h3>{{result.question | uppercase}} ?</h3></a><br>
+            <div ng-repeat="tag in result.tags" style="display:inline;">
                 <label class="btn btn-success btn-xs">{{ tag }}</label>&nbsp;&nbsp;
             </div>
         </div>
