@@ -27,25 +27,42 @@
 <accordion close-others="oneAtATime">
     <accordion-group is-open="preview_isSelected" ng-init="preview_isSelected = true">
         <accordion-heading>
-            <div ng-click="preview_isSelected = !preview_isSelected"  style="height: 30px; font-size: 25px;"> {{CreateAnswerCTRL.input.title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
+            <div ng-click="preview_isSelected = !preview_isSelected"  style="height: 30px; font-size: 25px;"> {{CreateAnswerCTRL.input.title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': preview_isSelected, 'glyphicon-chevron-down': !preview_isSelected}"></i> </div>
         </accordion-heading>
         <p class="lead">{{CreateAnswerCTRL.input.headline}}</p><br><br>
-        <div ng-controller="CarouselDemoCtrl">
+        <ul ng-show="CreateAnswerCTRL.Srvc_EB.bullettype == 'unordered'">
+        <li ng-repeat="bullet in CreateAnswerCTRL.Srvc_EB.Arr_bullettext" class="lead cs_bold">{{bullet.text}}</li>
+        </ul>
+        <ol ng-show="CreateAnswerCTRL.Srvc_EB.bullettype == 'ordered'">
+            <li ng-repeat="bullet in CreateAnswerCTRL.Srvc_EB.Arr_bullettext" class="lead cs_bold">{{bullet.text}}</li>
+        </ol>
+        <br>
+        <div>
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <carousel interval="myInterval">
-                    <slide ng-repeat="slide in slides" active="slide.active">
-                        <img ng-src="{{slide.image}}" style="max-height:300px;margin:auto;">
+                    <slide ng-repeat="slide in CreateAnswerCTRL.answerimages" active="slide.active">
+                            <img ng-src="http://localhost/images/{{ slide.image }}" style="height:300px;margin:auto;">
 
-                        <div class="carousel-caption">
-                            <h4>Slide {{$index}}</h4>
-                            <p>{{slide.text}}</p>
+                        <div class="captionplacement">
+                            {{slide.text}}
                         </div>
                     </slide>
                 </carousel>
             </div>
         </div>
+
     </accordion-group>
+    <div class="panel-footer cs_bg_lightblack textwhite" ng-hide="!preview_isSelected">
+        <ul class="list-inline">
+            <li ng-repeat="link in CreateAnswerCTRL.linkobjs.Arr_link_objs">*
+                <a ng-href="http://{{ link.linkurl }}">
+                    {{ link.linktext }}
+                </a>
+            </li>
+        </ul>
+    </div>
+
 </accordion>
 
 <div class="row" id="editorcontainer">
@@ -72,14 +89,17 @@
                                      <div style="border: dotted thick lightgray; background-color: ghostwhite; padding: 20px">
                                         <div class="row">
                                             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                                               <img ng-repeat="names in CreateAnswerCTRL.answerimages" ng-src="http://localhost/images/{{names.imagename}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail">
+                                               <label ng-repeat="names in CreateAnswerCTRL.answerimages" style="position: relative;">
+                                                 <img ng-src="http://localhost/images/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
+                                                 <input ng-show="gotclicked" type="text" ng-model="names.text" style="position: absolute;bottom: 0px; width: 100%">
+                                               </label>
                                             </div>
                                          </div>
                                          <div class="row">
                                              <div class="col-xs-12 col-xs-offset-0 col-sm-8 col-sm-offset-2">
                                                  <label class="custom-file-upload">
                                                      <input type="file" name="myfile"
-                                                            onchange="angular.element(this).scope().uploadFile(this.files)"/>
+                                                            onchange="angular.element(this).scope().CreateAnswerCTRL.uploadFile(this.files)"/>
                                                      +Imagesss
                                                  </label>
                                              </div>
@@ -88,8 +108,32 @@
                                  </form>
                             </div>
                         </div>
+                        <button class="btn btn-default" ng-click="bulletpoint_isCollapsed = !bulletpoint_isCollapsed"
+                                ng-init="bulletpoint_isCollapsed = true">BulletPoints
+                        </button>
+                        <hr>
+                        <div collapse="bulletpoint_isCollapsed">
+                            <button ng-click="CreateAnswerCTRL.Srvc_EB.addbullet()">AddBulletPoint</button>
+                            <button ng-click="CreateAnswerCTRL.Srvc_EB.removebullet()">deletebulletpoint</button>
+                            <button ng-click="CreateAnswerCTRL.Srvc_EB.togglebullettype() ">BulletTypes</button><br><br>
+                            <div ng-repeat="input in CreateAnswerCTRL.Srvc_EB.Arr_bullettext">
+                              *<input type="text"  ng-model="input.text"><br>
+                            </div><br>
+                        </div>
+                        <button class="btn btn-default" ng-click="link_isCollapsed = !link_isCollapsed"
+                                ng-init="link_isCollapsed = true">Links
+                        </button>
+                        <hr>
+                        <div collapse="link_isCollapsed">
+                            <button ng-click="CreateAnswerCTRL.linkobjs.addlink()">Addlink</button>
+                            <button ng-click="CreateAnswerCTRL.linkobjs.removelink()">Removelink</button><br>
+                            <div ng-repeat="link in CreateAnswerCTRL.linkobjs.Arr_link_objs">
+                                <input type="text"  ng-model="link.linktext" placeholder="link text">
+                                <input type="text" ng-model="link.linkurl" placeholder="link url">
+                            </div>
+                        </div>
                     </div>
-              <div class="panel-footer"> Panel footer </div>
+              <div class="panel-footer"> Editors Footer</div>
              </div>
         </div>
      </div>

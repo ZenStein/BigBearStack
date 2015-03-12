@@ -38,15 +38,21 @@ $uploadfile = $uploaddir . basename($_FILES['myfile']['name']);
 
 
 if (move_uploaded_file($_FILES['myfile']['tmp_name'], $uploadfile)) {
-    $dir    = 'images';
-    $rawfilesnames = scandir($dir);
-    $filenames = removehiddenfiles($rawfilesnames);
-    $filenames_objArr = [];
-    for($x=0;$x<count($filenames);$x++){
-        $filenames_objArr[$x] = json_encode(["imagename"=>$filenames[$x]]);
-    }
 
-    echo "[" . implode(',',$filenames_objArr) . "]";
+    /*******/
+  // echo  basename($_FILES['myfile']['name']);
+    $filename = basename($_FILES['myfile']['name']);
+echo  json_encode(["image"=>$filename,"text"=>"$filename default"]);
+    /*******/
+//    $dir    = 'images';
+//    $rawfilesnames = scandir($dir);
+//    $filenames = removehiddenfiles($rawfilesnames);
+//    $filenames_objArr = [];
+//    for($x=0;$x<count($filenames);$x++){
+//        $filenames_objArr[$x] = json_encode(["image"=>$filenames[$x]]);
+//    }
+//
+//    echo "[" . implode(',',$filenames_objArr) . "]";
 } else {
    echo "Upload failed";
 }
