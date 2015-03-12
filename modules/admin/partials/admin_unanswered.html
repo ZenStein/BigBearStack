@@ -13,17 +13,9 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
+            <tr ng-repeat="unanswered in UnansweredCTRL.data">
                 <td>1</td>
-                <td><a href="#/admin/unanswered/777/createanswer">Unanswered Question 1</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Unanswered Question 2</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Unanswered Question 3</td>
+                <td><a href="#/admin/unanswered/{{ unanswered.qid }}/createanswer">{{unanswered.question}}</a></td>
             </tr>
             </tbody>
         </table>

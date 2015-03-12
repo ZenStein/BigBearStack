@@ -4,15 +4,17 @@
 
 function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HOST, PHPanswerviewer){
 
-		$scope.author = "SomeDude";
-		$scope.answercontent = "Wisdom";
+		$scope.author = "";
+		$scope.title = "";
+		$scope.answerheader = "";
 		$scope.questionid = $routeParams.qid;
 
 		$scope.postanswer = function () {
 				alert('hitagain');
 				$scope.postedAns = {
 						"author": $scope.author,
-						"answercontent": $scope.answercontent,
+						"title": $scope.title,
+						"answerheader": $scope.answerheader,
 						"qid": $scope.questionid
 				};
 				var req = {

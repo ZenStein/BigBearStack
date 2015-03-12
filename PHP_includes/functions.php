@@ -51,19 +51,19 @@
     }
   }
 
-  function InsertNewAnswer($questionid, $content, $author){
+  function InsertNewAnswer($questionid, $title, $answerheader, $author){
     $db = MySQLi_localhost_connect();
     $numargs = func_num_args();
-    if($numargs != 3){
-      return "Error! argument mismatch in \'InsertNewAnswer\'. $numargs arguments passed, supposed to be 3";
+    if($numargs != 4){
+      return "Error! argument mismatch in \'InsertNewAnswer\'. $numargs arguments passed, supposed to be 4";
     }
     $argsArr = func_get_args();
     for ($i = 0; $i < $numargs; $i++) {
       $inputsArr[$i] = $db->real_escape_string($argsArr[$i]);
     }
-    $query = "INSERT INTO `Cabins4LessFAQ`.`Master_Answers` (`qid`,`content`,`author`) VALUES (?,?,?)";
+    $query = "INSERT INTO `Cabins4LessFAQ`.`Master_Answers` (`qid`,`title`, `header`,`author`) VALUES (?,?,?,?)";
     $stmt  = $db->prepare($query);
-    $stmt->bind_param("iss", $inputsArr[0], $inputsArr[1], $inputsArr[2]);
+    $stmt->bind_param("isss", $inputsArr[0], $inputsArr[1], $inputsArr[2], $inputsArr[3]);
     $stmt->execute();
     if($stmt->affected_rows == 1){ 
       $stmt->close(); 
