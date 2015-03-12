@@ -13,8 +13,10 @@
 						.controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
 						.controller ('admin_ctrl_unanswered', admin_ctrl_unanswered)
 						.controller ('admin_ctrl_createanswer', admin_ctrl_createanswer)
-						.controller ('CarouselDemoCtrl', CarouselDemoCtrl)
-                        .service('adminService', adminService);
+                        .service('adminService_images', adminService_images)
+      .service("adminService_bullets", adminService_bullets)
+      .service ("adminService_links", adminService_links);;
+
 
 
 
@@ -51,75 +53,56 @@ function admin_config($routeProvider){
 				this.tosee = thisistest.testname;
 		}
 
-		function admin_ctrl_createanswer ($scope, $http, adminService) {
- //				alert ('tester');
+		function admin_ctrl_createanswer ($scope, $http, adminService_images, adminService_bullets, adminService_links) {
+    var CTRL = this;
+    CTRL.Srvc_EB = adminService_bullets;
+    CTRL.linkobjs = adminService_links;
+    CTRL.answerimages = adminService_images.Arr_image_objs;
 
-				var CTRL = this;
-            CTRL.numimages = 1
-            $scope.answerimages = [
-            {imagename:'default.png'}
+    adminService_images.http_get__Arr_image_obj().then(function(result){
+              adminService_images.set_Arr_image_obj(result);
+              CTRL.answerimages = adminService_images.Arr_image_objs;
+		  });
 
-            ];
-
-				//CTRL.isCollapsed = true;
-				//CTRL.iteratorLimit = 3;
-				//
-				//
-				//
-				//		CTRL.checkModel = {
-				//				left: false,
-				//				middle: true,
-				//				right: false
-				//		};
-				//
-				//
-				//CTRL.testvalue = {
-				//								test:"title goes here from ctrl",
-				//						headline:"headline here",
-				//		 bulletpoints:[],
-				//						    images:[],
-				//								   footer:"footerhere"
-				//						            };
-				//
-				//CTRL.addbullet = function(){};
-				//CTRL.getimages = function(){};
-				//CTRL.uploadimages = function(images){
-				//
-				//};
-		function setAnswerImages(value){
-         CTRL.answerimages = value;
-           // $scope.apply();
-        }
-
-            adminService.getimages().then(function(result){
-			console.log(result);
-           setAnswerImages(result);
-         //   $scope.$apply();
-		});
-
-            $scope.uploadFile = function (files) {
-            var fd = new FormData ();
-            //Take the first selected file
-            fd.append ("myfile", files[0]);
-
-            var uploadUrl = "http://localhost/upload.php";
-            $http.post (uploadUrl, fd, {
-                    withCredentials: true,
-                    headers: {'Content-Type': undefined},
-                    transformRequest: angular.identity
-            }).success (function(result){
-               setAnswerImages(result);
-                console.log(result);
-              })
-            .error (function(){console.log ('...DAMN !...');});
+    CTRL.uploadFile = function (files) {
+            //var fd = new FormData ();
+            ////Take the first selected file
+            //fd.append ("myfile", files[0]);
+            //
+            //var uploadUrl = "http://localhost/upload.php";
+            //$http.post (uploadUrl, fd, {
+            //        withCredentials: true,
+            //        headers: {'Content-Type': undefined},
+            //        transformRequest: angular.identity
+            //}).success (function(result){
+            //   adminService_images.set_Arr_image_obj(result);
+            //  CTRL.answerimages = adminService_images.Arr_image_objs;
+            //
+            //  })
+            //.error (function(){console.log ('...DAMN !...');});
+      adminService_images.uploadfile(files).success(function(result){
+        adminService_images.add_Arr_image_objs (result);
+      });
 
     };
 		}
-    function adminService($http, ROOT_HOST){
-        return{
-            getimages:getimages
-        };
-      		function getimages(){
+
+  function adminService_images($http, ROOT_HOST){
+        return          {
+            Arr_image_objs:Arr_image_objs,
+            set_Arr_image_obj: set_Arr_image_obj,
+          add_Arr_image_objs: add_Arr_image_objs,
+          remove_Arr_image_objs: remove_Arr_image_objs,
+        http_get__Arr_image_obj:http_get__Arr_image_obj,
+                      uploadfile: uploadfile
+                                 };
+
+        var Arr_image_objs = [{
+            name:'default.png',
+             text:'this is the default text from admin service'
+                  }];
+
+        function http_get__Arr_image_obj(){
 				var req = {
 										method: 'GET',
 										    url: ROOT_HOST +'/getimagelist.php',
@@ -132,46 +115,101 @@ function admin_config($routeProvider){
                     return result.data;
 				  });
 		}
+
+        function set_Arr_image_obj(Arr_objs){
+            this.Arr_image_objs = Arr_objs;
+        }
+
+        function add_Arr_image_objs(image_obj){
+          this.Arr_image_objs.push(image_obj);
+        }
+    function remove_Arr_image_objs(){
+      this.Arr_image_objs.pop();
     }
 
-		function CarouselDemoCtrl($scope, ROOT_HOST){
 
-				$scope.myInterval = -5;
-				var slides = $scope.slides = [];
-			var defaultimage = ROOT_HOST + 'images/default.png';
-				var defaultslide =[
-				      {
-						image: defaultimage,
-								text: ['default text goes here']
-										   },{
-								image: ROOT_HOST + 'images/default.png',
-								text: ['default text goes here22']
+      function uploadfile(files){
 
-						}];
-				$scope.addSlide = function (obj) {
-						var newWidth = 600 + slides.length + 1;
-						slides.push (obj);
-				};
+          var fd = new FormData ();
+        //Take the first selected file
+        fd.append ("myfile", files[0]);
 
-						for (var i = 0; i < 2; i++) {
-								$scope.addSlide (defaultslide[i]);
-						}
-		}
+        var uploadUrl = "http://localhost/upload.php";
+        return $http.post (uploadUrl, fd, {
+          withCredentials: true,
+          headers: {'Content-Type': undefined},
+          transformRequest: angular.identity
+        })
+        //    .success (function (result) {
+        //  // setAnswerImages (result);
+        //  console.log ('upload file succes result below');
+        //  console.log (result);
+        //  this.add_Arr_image_objs(result);
+        //})
+        //    .error (function () {
+        //  console.log ('...DAMN !...');
+        //});
 
-/* original copy of this function, here for reference*/
-		//function CarouselDemoCtrl ($scope) {
-		//		$scope.myInterval = -5;
-		//		var slides = $scope.slides = [];
-		//		$scope.addSlide = function () {
-		//				var newWidth = 600 + slides.length + 1;
-		//				slides.push ({
-		//						image: 'http://placekitten.com/' + newWidth + '/300',
-		//						text: ['More', 'Extra', 'Lots of', 'Surplus'][slides.length % 4] + ' ' +
-		//						['Cats', 'Kittys', 'Felines', 'Cutes'][slides.length % 4]
-		//				});
-		//		};
-		//		for (var i = 0; i < 4; i++) {
-		//				$scope.addSlide ();
-		//		}
-		//}
+
+      }
+    }
+function adminService_bullets(){
+  return{
+    addbullet: addbullet,
+    removebullet: removebullet,
+    togglebullettype: togglebullettype,
+    bullettype: "unordered",
+    numbullets: numbullets,
+    Arr_bullettext: []
+  };
+  var numbullets = 0;
+
+  function addbullet(){
+    var length = this.Arr_bullettext.length;
+    var index = length+1;
+    var bullet_OBJ = {
+      index: index,
+      text: ""
+    }
+    this.Arr_bullettext.push(bullet_OBJ);
+  }
+  function removebullet(){
+    this.numbullets -= 1;
+    this.Arr_bullettext.pop();
+
+  }
+  function togglebullettype(){
+    var currentype = this.bullettype;
+    var setype = (currentype == "unordered" ? "ordered" : "unordered");
+    this.bullettype = setype;
+  }
+
+}
+  function adminService_links(){
+    return {
+      addlink: addlink,
+      removelink: removelink,
+      Arr_link_objs: []
+    };
+
+
+    function addlink () {
+      var length = this.Arr_link_objs.length;
+      var index = length + 1;
+      var link_OBJ = {
+        index: index,
+        linktext: "",
+        linkurl:""
+      }
+      this.Arr_link_objs.push (link_OBJ);
+    }
+
+    function removelink () {
+      this.numlinks -= 1;
+      this.Arr_link_objs.pop ();
+
+    }
+
+
+  }
 }) ();

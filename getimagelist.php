@@ -23,7 +23,7 @@ $rawfilesnames = scandir($dir);
 $filenames = removehiddenfiles($rawfilesnames);
 $filenames_objArr = [];
 for($x=0;$x<count($filenames);$x++){
-    $filenames_objArr[$x] = json_encode(["imagename"=>$filenames[$x]]);
+    $filenames_objArr[$x] = json_encode(["image"=>$filenames[$x],"text"=>"default"]);
 }
 
 echo "[" . implode(',',$filenames_objArr) . "]";
