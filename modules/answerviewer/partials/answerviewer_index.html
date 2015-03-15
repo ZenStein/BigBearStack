@@ -17,7 +17,7 @@
     </div> 
   </div>    
 </div>
-<div>Data = {{ AnswerViewerCTRL.package.answers | json }}</div>
+<div>Data = {{ AnswerViewerCTRL.package.answers[0].bullets[0].text}}</div>
 <hr>
 <nav class="navbar navbar-inverse">
 <form class="navbar-form navbar-center" role="search">
@@ -31,22 +31,50 @@
 </form>
 </nav>
 
+<div ng-repeat="answer in AnswerViewerCTRL.package.answers">
 <accordion close-others="oneAtATime">
-    <accordion-group is-open="isSelected "  ng-repeat="answer in AnswerViewerCTRL.package.answers" >
+    <accordion-group is-open="preview_isSelected" ng-init="preview_isSelected = false">
         <accordion-heading>
-            <div ng-click="isSelected = !isSelected"> {{answer.content}} <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i> </div>
+            <div ng-click="preview_isSelected = !preview_isSelected" style="height: 30px; font-size: 25px;">
+                {{answer.title}}<i class="pull-right glyphicon"
+                                                   ng-class="{'glyphicon-chevron-up': preview_isSelected, 'glyphicon-chevron-down': !preview_isSelected}"></i> </div>
         </accordion-heading>
-        <div class="media">
-            <div class="media-left">
-                <a href="#">
-                    <img class="media-object" src="http://www.poolpickem.com/stackapp/images/angular-pic.jpeg" alt="...">
-                </a>
-            </div>
-            <div class="media-body">
-                <h4 class="media-heading">Media heading</h4>
-                ...
+        <p class="lead">{{ answer.header }}</p><br><br>
+        <ul ng-show="answer.bullettype == 'unordered'">
+            <li ng-repeat="bullet in answer.bullets" class="lead cs_bold">{{bullet.text}}
+            </li>
+        </ul>
+        <ol ng-show="answer.bullettype == 'ordered'">
+            <li ng-repeat="bullet in answer.bullets" class="lead cs_bold">{{bullet.text}}
+            </li>
+        </ol>
+        <br>
+
+        <div>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in answer.images" active="slide.active">
+                        <img ng-src="http://localhost/images/answers/{{ answer.qid }}/{{answer.key}}/{{ slide.image }}" style="height:300px;margin:auto;">
+
+                        <div class="captionplacement">
+                            {{slide.text}}
+                        </div>
+                    </slide>
+                </carousel>
             </div>
         </div>
 
     </accordion-group>
+    <div class="panel-footer cs_bg_lightblack textwhite" ng-hide="!preview_isSelected">
+        <ul class="list-inline">
+            <li ng-repeat="link in answer.links">*
+                <a ng-href="http://{{ link.linkurl }}">
+                    {{ link.linktext }}
+                </a>
+            </li>
+        </ul>
+    </div>
+
 </accordion>
+    </div>

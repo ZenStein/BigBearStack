@@ -23,7 +23,7 @@
                     <footer class="pull-right">
                         ~{{ CreateAnswerCTRL.questiondata.author }}~&nbsp;&nbsp;
                         <cite title="Source Title">
-                            {{ CreateAnswerCTRL.questiondata.timestamp }}
+                            {{ CreateAnswerCTRL.questiondata.timestamp }}{{CreateAnswerCTRL.bulletobj.Arr_bullettext | json}}
                         </cite>
                     </footer>
                 </div>
@@ -47,7 +47,7 @@
             <div class="col-md-6">
                 <carousel interval="myInterval">
                     <slide ng-repeat="slide in CreateAnswerCTRL.imageobj.Arr_image_objs" active="slide.active">
-                            <img ng-src="http://localhost/images/{{ slide.image }}" style="height:300px;margin:auto;">
+                            <img ng-src="http://localhost/images/answers/{{ slide.qid }}/{{slide.key}}/{{slide.image}}" style="height:300px;margin:auto;">
 
                         <div class="captionplacement">
                             {{slide.text}}
@@ -82,7 +82,7 @@
               <h3 class="panel-title"><input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.title" placeholder="Title" aria-describedby="sizing-addon1"></h3>
               </div>
                     <div class="panel-body" style=" min-height: 250px;">
-                        <form novalidate>
+                        <form name="createanswerform"novalidate>
                         <div class="input-group input-group-lg">
                           <input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.answerheader" placeholder="Header" aria-describedby="sizing-addon1">
                         </div>
@@ -96,7 +96,7 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-md-8 col-md-offset-2">
                                                <label ng-repeat="names in CreateAnswerCTRL.imageobj.Arr_image_objs" style="position: relative;">
-                                                 <img ng-src="http://localhost/images/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
+                                                 <img ng-src="http://localhost/images/answers/{{names.qid}}/{{names.key}}/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
                                                  <input ng-show="gotclicked" type="text" ng-model="names.text" style="position: absolute;bottom: 0px; width: 100%">
                                                </label>
                                             </div>
@@ -138,8 +138,8 @@
                                 <input type="text" ng-model="link.linkurl" placeholder="link url">
                             </div>
                         </div>
-                            Author:<input type="text" ng-model="CreateAnswerCTRL.input.author">
-                            <button type="button" ng-click="CreateAnswerCTRL.postthisanswer()">PostThisAnswer!</button>
+                            Author:<input type="text" name="author"  ng-model="CreateAnswerCTRL.input.author">
+                            <button type="submit" ng-click="CreateAnswerCTRL.postthisanswer()">PostThisAnswer!</button>
                              </form>
                     </div>
               <div class="panel-footer"></div>

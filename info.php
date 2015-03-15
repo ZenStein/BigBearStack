@@ -6,4 +6,6 @@
  * Time: 10:59 PM
  */
 
-phpinfo();
+
+var_dump($_FILES);
+//phpinfo();

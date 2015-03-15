@@ -41,6 +41,9 @@ function answerviewer_ctrl_answerviewer_index ($scope, $routeParams, $log, $moda
 		var answerviewerctrl = this;
 		answerviewerctrl.init = answerviewerService.activate ($routeParams.qid);
 		answerviewerctrl.package = answerviewerService.data;
+   // answerviewerctrl.test = angular.fromJson(answerviewerctrl.package.answers.images);
+		console.log('below answerviewer .package');
+		console.log (answerviewerctrl.package);
 		$scope.oneAtATime = true;
 
 		answerviewerctrl.addanswer = function (size) {

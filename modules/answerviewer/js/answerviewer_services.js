@@ -5,7 +5,7 @@
 function answerviewerFactory ($http, ROOT_HOST, PHPanswerviewer) {
 		return {
 				get: function (QorA, qid) {
-						return $http.get (ROOT_HOST + PHPanswerviewer + "get" + QorA + ".php?qid=" + qid)
+						return $http.get (ROOT_HOST + PHPanswerviewer + "get" + QorA + ".php?qid=" + qid);
 				}
 		};
 }
@@ -29,7 +29,11 @@ function answerviewerService (answerviewerFactory, $q) {
 				})
 								.then (function (result2) {
 						promise.answers = result2.data;
-						answerviewerService.data.answers = promise.answers;
+
+                    answerviewerService.data.answers = promise.answers;
+                    //JSON.parse(answerviewerService.data.answers);
+                    //JSON.parse( answerviewerService.data.answers);
+
 						
 						
 				});
