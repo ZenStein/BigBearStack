@@ -4,15 +4,17 @@
 
 function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HOST, PHPanswerviewer){
 
-		$scope.author = "SomeDude";
-		$scope.answercontent = "Wisdom";
+		$scope.author = "";
+		$scope.title = "";
+		$scope.answerheader = "";
 		$scope.questionid = $routeParams.qid;
 
 		$scope.postanswer = function () {
 				alert('hitagain');
 				$scope.postedAns = {
 						"author": $scope.author,
-						"answercontent": $scope.answercontent,
+						"title": $scope.title,
+						"answerheader": $scope.answerheader,
 						"qid": $scope.questionid
 				};
 				var req = {
@@ -39,6 +41,9 @@ function answerviewer_ctrl_answerviewer_index ($scope, $routeParams, $log, $moda
 		var answerviewerctrl = this;
 		answerviewerctrl.init = answerviewerService.activate ($routeParams.qid);
 		answerviewerctrl.package = answerviewerService.data;
+   // answerviewerctrl.test = angular.fromJson(answerviewerctrl.package.answers.images);
+		console.log('below answerviewer .package');
+		console.log (answerviewerctrl.package);
 		$scope.oneAtATime = true;
 
 		answerviewerctrl.addanswer = function (size) {

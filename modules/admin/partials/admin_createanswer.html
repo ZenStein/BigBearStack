@@ -8,41 +8,46 @@
 
 <h3>CreateAnswer</h3>
 
-<div class="jumbotron">
-    <div class="row">
-        <div class="col-sm-0 col-md-2 col-lg-2"></div>
-        <div class="col-sm-12 col-md-8 col-lg-8">
-            <p class="center"><h2>this.question?</h2></p>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-sm-0 col-md-2 col-lg-2"></div>
+                <div class="col-sm-12 col-md-8 col-lg-8">
+                    <p class="center">
+
+                    <h2>{{ CreateAnswerCTRL.questiondata.question }}?</h2></p>
+                </div>
+                <div class="col-sm-0 col-md-2 col-lg-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <footer class="pull-right">
+                        ~{{ CreateAnswerCTRL.questiondata.author }}~&nbsp;&nbsp;
+                        <cite title="Source Title">
+                            {{ CreateAnswerCTRL.questiondata.timestamp }}{{CreateAnswerCTRL.bulletobj.Arr_bullettext | json}}
+                        </cite>
+                    </footer>
+                </div>
+            </div>
         </div>
-        <div class="col-sm-0 col-md-2 col-lg-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <footer class="pull-right">
-                ~this.author~&nbsp;&nbsp;
-            </footer>
-        </div>
-    </div>
-</div>
 <accordion close-others="oneAtATime">
     <accordion-group is-open="preview_isSelected" ng-init="preview_isSelected = true">
         <accordion-heading>
             <div ng-click="preview_isSelected = !preview_isSelected"  style="height: 30px; font-size: 25px;"> {{CreateAnswerCTRL.input.title}}<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-up': preview_isSelected, 'glyphicon-chevron-down': !preview_isSelected}"></i> </div>
         </accordion-heading>
-        <p class="lead">{{CreateAnswerCTRL.input.headline}}</p><br><br>
-        <ul ng-show="CreateAnswerCTRL.Srvc_EB.bullettype == 'unordered'">
-        <li ng-repeat="bullet in CreateAnswerCTRL.Srvc_EB.Arr_bullettext" class="lead cs_bold">{{bullet.text}}</li>
+        <p class="lead">{{ CreateAnswerCTRL.input.answerheader }}</p><br><br>
+        <ul ng-show="CreateAnswerCTRL.bulletobj.bullettype == 'unordered'">
+        <li ng-repeat="bullet in CreateAnswerCTRL.bulletobj.Arr_bullettext" class="lead cs_bold">{{bullet.text}}</li>
         </ul>
-        <ol ng-show="CreateAnswerCTRL.Srvc_EB.bullettype == 'ordered'">
-            <li ng-repeat="bullet in CreateAnswerCTRL.Srvc_EB.Arr_bullettext" class="lead cs_bold">{{bullet.text}}</li>
+        <ol ng-show="CreateAnswerCTRL.bulletobj.bullettype == 'ordered'">
+            <li ng-repeat="bullet in CreateAnswerCTRL.bulletobj.Arr_bullettext" class="lead cs_bold">{{bullet.text}}</li>
         </ol>
         <br>
         <div>
             <div class="col-md-3"></div>
             <div class="col-md-6">
                 <carousel interval="myInterval">
-                    <slide ng-repeat="slide in CreateAnswerCTRL.answerimages" active="slide.active">
-                            <img ng-src="http://localhost/images/{{ slide.image }}" style="height:300px;margin:auto;">
+                    <slide ng-repeat="slide in CreateAnswerCTRL.imageobj.Arr_image_objs" active="slide.active">
+                            <img ng-src="http://localhost/images/answers/{{ slide.qid }}/{{slide.key}}/{{slide.image}}" style="height:300px;margin:auto;">
 
                         <div class="captionplacement">
                             {{slide.text}}
@@ -55,7 +60,7 @@
     </accordion-group>
     <div class="panel-footer cs_bg_lightblack textwhite" ng-hide="!preview_isSelected">
         <ul class="list-inline">
-            <li ng-repeat="link in CreateAnswerCTRL.linkobjs.Arr_link_objs">*
+            <li ng-repeat="link in CreateAnswerCTRL.linkobj.Arr_link_objs">*
                 <a ng-href="http://{{ link.linkurl }}">
                     {{ link.linktext }}
                 </a>
@@ -77,20 +82,21 @@
               <h3 class="panel-title"><input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.title" placeholder="Title" aria-describedby="sizing-addon1"></h3>
               </div>
                     <div class="panel-body" style=" min-height: 250px;">
+                        <form name="createanswerform"novalidate>
                         <div class="input-group input-group-lg">
-                          <input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.headline" placeholder="Headline" aria-describedby="sizing-addon1">
+                          <input type="text" class="form-control" ng-model="CreateAnswerCTRL.input.answerheader" placeholder="Header" aria-describedby="sizing-addon1">
                         </div>
                           <br><br>
                           <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed" ng-init="isCollapsed = true">ImageUploader</button>
                           <hr>
                         <div collapse="isCollapsed">
                             <div class="well well-lg">
-                                 <form novalidate>
+
                                      <div style="border: dotted thick lightgray; background-color: ghostwhite; padding: 20px">
                                         <div class="row">
                                             <div class="col-xs-12 col-md-8 col-md-offset-2">
-                                               <label ng-repeat="names in CreateAnswerCTRL.answerimages" style="position: relative;">
-                                                 <img ng-src="http://localhost/images/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
+                                               <label ng-repeat="names in CreateAnswerCTRL.imageobj.Arr_image_objs" style="position: relative;">
+                                                 <img ng-src="http://localhost/images/answers/{{names.qid}}/{{names.key}}/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
                                                  <input ng-show="gotclicked" type="text" ng-model="names.text" style="position: absolute;bottom: 0px; width: 100%">
                                                </label>
                                             </div>
@@ -100,12 +106,12 @@
                                                  <label class="custom-file-upload">
                                                      <input type="file" name="myfile"
                                                             onchange="angular.element(this).scope().CreateAnswerCTRL.uploadFile(this.files)"/>
-                                                     +Imagesss
+                                                     +Imagess
                                                  </label>
                                              </div>
                                          </div>
                                      </div>
-                                 </form>
+
                             </div>
                         </div>
                         <button class="btn btn-default" ng-click="bulletpoint_isCollapsed = !bulletpoint_isCollapsed"
@@ -113,10 +119,10 @@
                         </button>
                         <hr>
                         <div collapse="bulletpoint_isCollapsed">
-                            <button ng-click="CreateAnswerCTRL.Srvc_EB.addbullet()">AddBulletPoint</button>
-                            <button ng-click="CreateAnswerCTRL.Srvc_EB.removebullet()">deletebulletpoint</button>
-                            <button ng-click="CreateAnswerCTRL.Srvc_EB.togglebullettype() ">BulletTypes</button><br><br>
-                            <div ng-repeat="input in CreateAnswerCTRL.Srvc_EB.Arr_bullettext">
+                            <button ng-click="CreateAnswerCTRL.bulletobj.addbullet()">AddBulletPoint</button>
+                            <button ng-click="CreateAnswerCTRL.bulletobj.removebullet()">deletebulletpoint</button>
+                            <button ng-click="CreateAnswerCTRL.bulletobj.togglebullettype() ">BulletTypes</button><br><br>
+                            <div ng-repeat="input in CreateAnswerCTRL.bulletobj.Arr_bullettext">
                               *<input type="text"  ng-model="input.text"><br>
                             </div><br>
                         </div>
@@ -125,15 +131,18 @@
                         </button>
                         <hr>
                         <div collapse="link_isCollapsed">
-                            <button ng-click="CreateAnswerCTRL.linkobjs.addlink()">Addlink</button>
-                            <button ng-click="CreateAnswerCTRL.linkobjs.removelink()">Removelink</button><br>
-                            <div ng-repeat="link in CreateAnswerCTRL.linkobjs.Arr_link_objs">
+                            <button ng-click="CreateAnswerCTRL.linkobj.addlink()">Addlink</button>
+                            <button ng-click="CreateAnswerCTRL.linkobj.removelink()">Removelink</button><br>
+                            <div ng-repeat="link in CreateAnswerCTRL.linkobj.Arr_link_objs">
                                 <input type="text"  ng-model="link.linktext" placeholder="link text">
                                 <input type="text" ng-model="link.linkurl" placeholder="link url">
                             </div>
                         </div>
+                            Author:<input type="text" name="author"  ng-model="CreateAnswerCTRL.input.author">
+                            <button type="submit" ng-click="CreateAnswerCTRL.postthisanswer()">PostThisAnswer!</button>
+                             </form>
                     </div>
-              <div class="panel-footer"> Editors Footer</div>
+              <div class="panel-footer"></div>
              </div>
         </div>
      </div>

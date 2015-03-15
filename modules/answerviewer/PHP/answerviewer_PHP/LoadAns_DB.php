@@ -5,19 +5,20 @@
     $MrCleaner = new InputsCleanse(
     array(
       "author"=>$_REQUEST['author'], 
-      "turntokeywords"    =>$_REQUEST['answercontent'],
+      "turntokeywords"    =>$_REQUEST['title'],
       "qid"=>$_REQUEST['qid']
     ));
   $author = $_REQUEST['author'];
-  $content     = $_REQUEST['answercontent'];
+  $title  = $_REQUEST['title'];
+$answerheader  = $_REQUEST['answerheader'];
   $qid = $_REQUEST['qid'];
   $keywords = $MrCleaner->getKeywordsAsString();
-  $a        = InsertNewAnswer($qid, $content, $author);
+  $a        = InsertNewAnswer($qid, $title,$answerheader, $author);
   if($a == 200){
     //echo "success Loading Answer!!";
     $somearr =     array(
                      "author"=>$_REQUEST['author'],
-                     "turntokeywords"    =>$_REQUEST['answercontent'],
+                     "turntokeywords"    =>$_REQUEST['title'],
                      "qid"=>$_REQUEST['qid']
                    );
     echo json_encode($somearr);
