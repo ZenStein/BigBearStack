@@ -1,6 +1,6 @@
 <?php
 
-  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 function stringto_objArr($string){
     $temp = substr($string, 0, -1);
     $temp2 = substr($temp,1);
@@ -17,7 +17,6 @@ function stringto_objArr($string){
 $qid = check_input($_REQUEST['qid']);
 settype($qid, "integer");
 $objArr = [];
-$x = 0;
 
 $db = MySQLi_localhost_connect();
 $query = "SELECT * FROM `Cabins4LessFAQ`.`Master_Answers` WHERE `qid` = $qid";
@@ -50,9 +49,6 @@ while ($row = $stmt->fetch_array(MYSQLI_ASSOC)){
     );
 
     array_push($objArr, json_encode($temp));
-
-
-$x++;
 }
 $stmt->close();
 $db->close();

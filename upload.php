@@ -7,26 +7,7 @@
  */
 
 //var_dump($_FILES);
-include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
-
-//function get_uploaded_file($uploaded_filename, $qid, $key)
-//{
-//    $removefromurl = '?qid=' . $qid . '&key=' . $key;
-// if(isset($_FILES[$uploaded_filename]["name"]))
-//{
-//  if($_FILES[$uploaded_filename]["name"] != "")
-//  {
-//    $uploaddir = 'images/';
-//    $uploadedfilename = $uploaddir . basename($_FILES[$uploaded_filename]['name'], $removefromurl);
-//
-//    if(!move_uploaded_file($_FILES[$uploaded_filename]['tmp_name'], $uploadedfilename)){die("upload Error");}
-//
-//    $theuploadedfile = file_get_contents($uploadedfilename);
-//    //$strippedtheuploadedfile = htmlspecialchars($theuploadedfile);
-//    return $theuploadedfile;
-//  }else{return false;}
-//}else{return false;}
-//}
+include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 
 function removehiddenfiles($Filenames_Arr){
   $filterednames = [];
@@ -49,14 +30,34 @@ function removehiddenfiles($Filenames_Arr){
 //    }while(is_dir($uniqueDir));
 //    return $uniqueDir;
 //}
-
-//echo basename('http://localhost/upload.php?qid=6&key=49', '?qid=6&key=4');
-/*******************************/
-
-
 $key = $_REQUEST['key'];
 $qid = $_REQUEST['qid'];
-$myfilename = $key;
+
+
+$qidimagedir = 'images/answers/' . $qid;
+$imagedir = 'images/answers/' . $qid . '/' . $key;
+if(!is_dir($qidimagedir)){
+    if(mkdir($qidimagedir)){
+       if(mkdir($imagedir)){
+          //success!!
+       }else {echo "couldn't make the directory "; exit;}
+    }else {echo "couldn't make the directory "; exit;}
+}else if(is_dir($qidimagedir)){
+   if(!is_dir($imagedir)){
+       if(mkdir($imagedir)){
+         //success!!
+       }else {echo "couldn't make the directory "; exit;}
+   }else if(is_dir($imagedir)){/* valid pre existing filepath, upload time! */}
+}
+
+
+
+
+//else{echo 'img directory already exists'; exit; }
+
+
+
+
 $uploaddir = 'images/answers/' . $qid . '/' . $key;
 $uploadedfilename = $uploaddir . '/' . basename($_FILES['myfile']['name']);
 
@@ -68,10 +69,6 @@ if(move_uploaded_file($_FILES['myfile']['tmp_name'], $uploadedfilename)) {
  }
 
 
-//$imagefile = get_uploaded_file('myfile', $qid, $key);
-//$putfile = $uploaddir . '/' . $filename;
-//if(file_put_contents($putfile, $imagefile)){
- // echo "successsfull Upload";
-//}
+
 
 ?>

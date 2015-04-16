@@ -5,7 +5,7 @@
  * Date: 3/11/15
  * Time: 9:11 PM
  */
-include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 var_dump($_REQUEST);
 $header = $_REQUEST['answerheader'];
 $author = $_REQUEST['author'];

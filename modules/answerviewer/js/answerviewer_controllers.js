@@ -48,7 +48,7 @@ function answerviewer_ctrl_answerviewer_index ($scope, $routeParams, $log, $moda
 
 		answerviewerctrl.addanswer = function (size) {
 				var modalInstance = $modal.open ({
-						templateUrl: 'http://localhost/modules/answerviewer/partials/answermodalcontent.html',
+						templateUrl: 'http://localhost/BigBearStack/modules/answerviewer/partials/answermodalcontent.html',
 						controller: 'ModalInstanceCtrl',
 						size: size,
 						resolve: {

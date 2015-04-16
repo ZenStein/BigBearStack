@@ -41,8 +41,8 @@
 		}
 
 		angular
-						.module ('ROOT', ['ngRoute', 'ui.bootstrap', 'admin', 'featured', 'search', 'post', 'answerviewer','ngTouch'])
-						.constant ('ROOT_HOST', 'http://localhost/')
+						.module ('ROOT', ['ngRoute', 'ui.bootstrap', 'admin', 'featured', 'search', 'post', 'answerviewer','ngTouch', 'ngTable'])
+						.constant ('ROOT_HOST', 'http://localhost/BigBearStack/')
 						.constant ('ROOT_PHP', 'modules/ROOT/PHP/ROOT_PHP/')
 						.provider('ROOTProvider', ROOTProvider)
 						.config (ROOT_config)

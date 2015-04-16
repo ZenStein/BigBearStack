@@ -7,16 +7,16 @@
 
 (function(){
 		angular
-						.module ('admin', [])
-						.constant ('PHPadmin', 'modules/admin/PHP/admin_PHP/')
-						.config (admin_config)
-						.controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
-						.controller ('admin_ctrl_unanswered', admin_ctrl_unanswered)
-						.controller ('admin_ctrl_createanswer', admin_ctrl_createanswer)
-                        .service('adminService_images', adminService_images)
-      .service("adminService_bullets", adminService_bullets)
-      .service ("adminService_links", adminService_links)
-    .service('createanswerService', createanswerService);
+            .module ('admin', ['ngTable'])
+            .constant ('PHPadmin', 'modules/admin/PHP/admin_PHP/')
+            .config (admin_config)
+            .controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
+            .controller ('admin_ctrl_unanswered', admin_ctrl_unanswered)
+            .controller ('admin_ctrl_createanswer', admin_ctrl_createanswer)
+            .service('adminService_images', adminService_images)
+            .service("adminService_bullets", adminService_bullets)
+            .service ("adminService_links", adminService_links)
+            .service('createanswerService', createanswerService);
 
 
 
@@ -28,6 +28,10 @@ function admin_config($routeProvider){
 				templateUrl: 'modules/admin/partials/admin_index.html',
 				controller: 'admin_ctrl_admin_index as Admin_IndexCTRL'
 		})
+      .when ('/admin/allquestions', {
+    templateUrl: 'modules/admin/partials/admin_getallQs.html',
+    controller: 'admin_getallQsController as allCTRL'
+  })
 						.when ('/admin/unanswered', {
 				templateUrl: 'modules/admin/partials/admin_unanswered.html',
 				controller: 'admin_ctrl_unanswered as UnansweredCTRL'
@@ -38,17 +42,14 @@ function admin_config($routeProvider){
 		});
 }
 
-
-
-
-		function admin_ctrl_admin_index () {
+function admin_ctrl_admin_index () {
 				var thisistest = {};
 
 				thisistest.testname = "mike";
 				this.tosee = thisistest.testname;
 		}
 
-		function admin_ctrl_unanswered ($http, ROOT_HOST, PHPadmin) {
+function admin_ctrl_unanswered ($http, ROOT_HOST, PHPadmin) {
 				var unanswered = this;
             unanswered.data = {
                 qid:"777",
@@ -160,25 +161,22 @@ function createanswerService(ROOT_HOST, $http, PHPadmin, $routeParams) {
   //  return $http (req)
   //}
 }
+
 function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_images, adminService_bullets, adminService_links, createanswerService) {
-    var CTRL = this;
-        CTRL.createansService = createanswerService;
-        CTRL.registrationkey = "";
-        CTRL.input = {
-                   title:"heres title",
-             answerheader:"this is header",
-                    author:"i am author",
-                        qid: $routeParams.qid_unanswered
-                            };
-        CTRL.questiondata = {};
-        //CTRL.title = "titlehere from controller";
-        //CTRL.header = "header from controller";
-        //CTRL.qid = "777";//$routeParams.qid;
-        CTRL.bulletobj = adminService_bullets;
-        CTRL.linkobj = adminService_links;
-        CTRL.imageobj = adminService_images;
-        // CTRL.author = "";
-    /*
+ var CTRL = this;
+     CTRL.createansService = createanswerService;
+     CTRL.registrationkey = "";
+     CTRL.input = {
+               title:"heres title",
+         answerheader:"this is header",
+                author:"i am author",
+                    qid: $routeParams.qid_unanswered
+                        };
+     CTRL.questiondata = {};
+     CTRL.bulletobj = adminService_bullets;
+     CTRL.linkobj = adminService_links;
+     CTRL.imageobj = adminService_images;
+     /*
     $http.get('http://host.com/first')
    .then(function(result){
     //post-process results and return promise from the next call
@@ -190,23 +188,23 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
    });
     * */
 
-    CTRL.createansService.getregistered($routeParams.qid_unanswered)
-      .then(function(result){
-        console.log('registrationkey result belowwww');
+     CTRL.createansService.getregistered($routeParams.qid_unanswered)
+         .then(function(result){
+        console.log('createansService.getregistered result');
         console.log(result);
         CTRL.registrationkey = result;
         return CTRL.createansService.getquestion();}).then(function(result){
           CTRL.questiondata = result;
-          return CTRL.imageobj.makeimagedir($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
+          //return CTRL.imageobj.makeimagedir($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
             return CTRL.imageobj.http_get__Arr_image_obj($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
-              console.log('http createans resultttt');
+              console.log('imageobj.http_get__Arr_image_obj result');
               console.log(result);
               if(result == 'FALSE'){CTRL.imageobj.setdefault_Arr_image_objs();}
               if(result != 'FALSE'){CTRL.imageobj.set_Arr_image_objs(result);}
 
       });
 
-    CTRL.uploadFile = function (files) {
+     CTRL.uploadFile = function (files) {
       CTRL.imageobj.uploadfile(files, $routeParams.qid_unanswered, CTRL.registrationkey)
         .success(function(result){
           console.log('upload file success result');
@@ -218,7 +216,7 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
         });
     };
 
-    CTRL.postthisanswer = function (){
+     CTRL.postthisanswer = function (){
         var key = CTRL.registrationkey;
       var inputs = CTRL.input;
       var images = CTRL.imageobj.getArr_image_objs_tostring();
@@ -227,178 +225,124 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
       var links= CTRL.linkobj.ArrObjs_toString();
       CTRL.createansService.postthisanswer(key, inputs, images, bullets, bullettype, links);
     };
-  }
-//function adminFactory_images($http, ROOT_HOST){
-//  return {
-//    $get:get
-//  };
-//  function get(){
-//    //var imagearray = this;
-//    var req = {
-//      method: 'GET',
-//      url: ROOT_HOST + '/getimagelist.php',
-//      headers: {'Content-Type': 'application/json'}
-//    };
-//
-//   return $http (req)
-//        .then (function (result) {
-//      console.log ("log is result below");
-//      console.log (result);
-//      //imagearray.data = result.data;
-//       return result.data;
-//      //set_Arr_image_obj (result.data);
-//    });
-//    //return imagearray.data;
-//  }
-//
-//}
-  function adminService_images($http, ROOT_HOST, $routeParams){
-// var arrayobjtest =this;
-      //var req = {
-      //  method: 'GET',
-      //  url: ROOT_HOST + '/getimagelist.php',
-      //  headers: {'Content-Type': 'application/json'}
-      //};
-      ///*return*/
-      //$http (req)
-      //    .then (function (result) {
-      //  console.log ("log is result below");
-      //  console.log (result);
-      //  // return result.data;
-      //  set_Arr_image_obj (result.data);
-      //});
-    //adminFactory_images.$get ().then (function (result) {
-    //  console.log ('inside service ,then from fact');
-    //  console.log (result);
-    //  arrayobjtest.data = result;
-    //});
+}
 
-
-
-    return          {
-            Arr_image_objs: [],
-        pathname:"default",
-            set_Arr_image_objs: set_Arr_image_objs,
-        setdefault_Arr_image_objs:setdefault_Arr_image_objs,
-          add_Arr_image_objs: add_Arr_image_objs,
+function adminService_images($http, ROOT_HOST, $routeParams){
+    return {
+                 Arr_image_objs: [],
+                       pathname:"default",
+             set_Arr_image_objs: set_Arr_image_objs,
+      setdefault_Arr_image_objs:setdefault_Arr_image_objs,
+             add_Arr_image_objs: add_Arr_image_objs,
           remove_Arr_image_objs: remove_Arr_image_objs,
         http_get__Arr_image_obj:http_get__Arr_image_obj,
-                      uploadfile: uploadfile,
-      getArr_image_objs_tostring: getArr_image_objs_tostring,
-        makeimagedir:makeimagedir
-      //  set_Arr_image_objObjs_imagefilnames:set_Arr_image_objObjs_imagefilnames,
-       // set_Arr_image_objpathname:set_Arr_image_objpathname
+                     uploadfile: uploadfile,
+     getArr_image_objs_tostring: getArr_image_objs_tostring,
+                   makeimagedir:makeimagedir
+    };
 
+    function setdefault_Arr_image_objs() {
+        var arr_image_objs = [{
+            image: 'default.png',
+            text: 'pic decription,',
+            qid: 'default',
+            key: 'default'
 
-                                 };
+        }];
+        this.Arr_image_objs = arr_image_objs;
+    }
 
-function setdefault_Arr_image_objs() {
-    var arr_image_objs = [{
-        image: 'default.png',
-        text: 'pic decription,',
-        qid: 'default',
-        key: 'default'
-
-    }];
-    this.Arr_image_objs = arr_image_objs;
-}
-      function makeimagedir(qid,key){
-        var req = {
-                method: 'POST',
-                    url: ROOT_HOST +'makeimagedir.php',
-                 headers: {'Content-Type': 'application/json'},
-                   params:{qid:qid,key:key}
-                           };
-        return $http (req).then (function (result) {
-                            console.log("makedir.php response result");
-                            console.log(result);
-                            return result.data;
-                           });
-      }
-      function http_get__Arr_image_obj(qid,key){
-        var req = {
-                method: 'POST',
-                    url: ROOT_HOST +'/getimagelist.php',
-                 headers: {'Content-Type': 'application/json'},
-                   params:{qid:qid,key:key}
-                           };
-        return $http (req).then (function (result) {
-                            console.log("http_get__Arr_image_obj result below");
-                            console.log(result);
-                            return result.data;
-                           });
-      }
-
-      function set_Arr_image_objs(value){
-          console.log('set_Arr_image_objs below');
-          console.log( typeof value);
-          var temp = [];
-          if(typeof value == "object"){
-              temp.push(value);
-              this.Arr_image_objs = temp;
+    function makeimagedir(qid,key){
+            var req = {
+                    method: 'POST',
+                        url: ROOT_HOST +'makeimagedir.php',
+                     headers: {'Content-Type': 'application/json'},
+                       params:{qid:qid,key:key}
+                               };
+            return $http (req).then (function (result) {
+                                console.log("makedir.php response result");
+                                console.log(result);
+                                return result.data;
+                               });
           }
-          else if(typeof value == "array"){
-              this.Arr_image_objs = value;
-          }
-      }
-      //function setpathname(newvalue){
-      //     this.pathname = newvalue;
-      //       }
-      //function getpathname(){
-      //    return this.pathname;
-      //}
-      //        function set_Arr_image_objObjs_imagefilnames(newvalue){
-      //      this.Arr_image_objs.Objs_imagefilnames = "tester";//newvalue;
-      //  }
 
-        function add_Arr_image_objs(image_obj){
-          console.log('this.Arr_image_objs[0].image');
-            console.log(this.Arr_image_objs[0].image);
-            console.log('param add_Arr');
-            console.log(image_obj);
-            if(this.Arr_image_objs[0].image == 'default.png'){
-              this.set_Arr_image_objs(image_obj);
+    function http_get__Arr_image_obj(qid,key){
+            var req = {
+                    method: 'POST',
+                        url: ROOT_HOST +'getimagelist.php',
+                     headers: {'Content-Type': 'application/json'},
+                       params:{qid:qid,key:key}
+                               };
+            return $http (req).then (function (result) {
+                                console.log("http_get__Arr_image_obj result below");
+                                console.log(result);
+                                return result.data;
+                               });
           }
-          else{
-          this.Arr_image_objs.push(image_obj);
-        }
-        }
+
+    function set_Arr_image_objs(value){
+              console.log('set_Arr_image_objs  type of param');
+              console.log( typeof value);
+              if(typeof value == "object"){
+                var temp = [];
+                    temp.push(value);
+                this.Arr_image_objs = temp;
+              }
+              else if(typeof value == "array"){
+                  this.Arr_image_objs = value;
+              }
+          }
+
+    function add_Arr_image_objs(image_obj){
+                console.log('this.Arr_image_objs[0].image');
+                //console.log(this.Arr_image_objs[0].image);
+                console.log('param add_Arr');
+                console.log(image_obj);
+                if(this.Arr_image_objs[0].image == 'default.png'){
+                  this.set_Arr_image_objs(image_obj);
+              }
+              else{
+              this.Arr_image_objs.push(image_obj);
+            }
+            }
+
     function remove_Arr_image_objs(){
-      this.Arr_image_objs.pop();
-    }
+          this.Arr_image_objs.pop();
+        }
+
+    function uploadfile(files, qid, key){
+             // var qid = $routeParams.qid_unanswered;
+              var fd = new FormData ();
+            //Take the first selected file
+            fd.append ('myfile', files[0]);
+
+            var uploadUrl = ROOT_HOST + "upload.php?qid="+qid+"&key="+key;
+            return $http.post (uploadUrl, fd, {
+              withCredentials: true,
+              headers: {'Content-Type': undefined},
+              transformRequest: angular.identity
+            })
+            //    .success (function (result) {
+            //  // setAnswerImages (result);
+            //  console.log ('upload file succes result below');
+            //  console.log (result);
+            //  this.add_Arr_image_objs(result);
+            //})
+            //    .error (function () {
+            //  console.log ('...DAMN !...');
+            //});
 
 
-      function uploadfile(files, qid, key){
-         // var qid = $routeParams.qid_unanswered;
-          var fd = new FormData ();
-        //Take the first selected file
-        fd.append ('myfile', files[0]);
+          }
 
-        var uploadUrl = ROOT_HOST + "upload.php?qid="+qid+"&key="+key;
-        return $http.post (uploadUrl, fd, {
-          withCredentials: true,
-          headers: {'Content-Type': undefined},
-          transformRequest: angular.identity
-        })
-        //    .success (function (result) {
-        //  // setAnswerImages (result);
-        //  console.log ('upload file succes result below');
-        //  console.log (result);
-        //  this.add_Arr_image_objs(result);
-        //})
-        //    .error (function () {
-        //  console.log ('...DAMN !...');
-        //});
-
-
-      }
     function getArr_image_objs_tostring(){
-    //  var imgobj_tostring = JSON.stringify (this.Arr_image_objs, ['image', 'text']);
-    //  return imgobj_tostring;
-    return JSON.stringify(this.Arr_image_objs);
-    }
+        //  var imgobj_tostring = JSON.stringify (this.Arr_image_objs, ['image', 'text']);
+        //  return imgobj_tostring;
+        return JSON.stringify(this.Arr_image_objs);
+        }
 
 }
+
 function adminService_bullets(){
   return{
     addbullet: addbullet,
@@ -452,7 +396,8 @@ function adminService_bullets(){
   }
 
 }
-  function adminService_links(){
+
+function adminService_links(){
     return {
       addlink: addlink,
       removelink: removelink,

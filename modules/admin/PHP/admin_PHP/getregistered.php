@@ -6,7 +6,7 @@
  * Time: 1:48 PM
  */
 
- include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+ include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 $qid = $_REQUEST['qid'];
 $db = MySQLi_localhost_connect();
 $registrationkey= '';

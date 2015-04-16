@@ -5,7 +5,7 @@
  * Date: 3/12/15
  * Time: 10:23 AM
  */
-include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 
 $db = MySQLi_localhost_connect();
 

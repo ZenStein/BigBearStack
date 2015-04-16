@@ -5,7 +5,7 @@
  * Date: 3/6/15
  * Time: 3:22 PM
  */
-include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 //$image = file_get_contents('images/default.png');
 //
 //echo $image;
@@ -26,24 +26,21 @@ $qid = $_REQUEST['qid'];
 $key = $_REQUEST['key'];
 $dir    = 'images/answers/' . $qid . '/' . $key;
 //$rawfilesnames = scandir($dir);
-if($rawfilesnames = scandir($dir)){
-    $filenames = removehiddenfiles($rawfilesnames);
-    $filenames_objArr = [];
-    if($filenames != 'empty') {
+if(is_dir($dir)) {
+    if ($rawfilesnames = scandir($dir)) {
+        $filenames = removehiddenfiles($rawfilesnames);
+        $filenames_objArr = [];
+        if ($filenames != 'empty') {
 
-        for ($x = 0; $x < count($filenames); $x++) {
-            $filenames_objArr[$x] = json_encode(["image" => $filenames[$x],
-                "text" => "Description for " . $filenames[$x],
-                "qid" => $qid,
-                "key" => $key]);
-        }
-    }
-   elseif($filenames == 'empty'){ echo  'FALSE'; exit;
-//        $filenames_objArr[0] = json_encode(["image" => 'default.png',
-//        "text" => "Description for default",
-//        "qid" => 'default',
-//        "key" => 'default']);
-    }
-    echo "[" . implode(',', $filenames_objArr) . "]";
-}
-else{echo "couldn't find that directory"; exit;}
+            for ($x = 0; $x < count($filenames); $x++) {
+                $filenames_objArr[$x] = json_encode(["image" => $filenames[$x],
+                    "text" => "Description for " . $filenames[$x],
+                    "qid" => $qid,
+                    "key" => $key]);
+            }
+        } elseif ($filenames == 'empty') {
+            echo 'FALSE'; exit;
+          }
+        echo "[" . implode(',', $filenames_objArr) . "]";
+    }else{echo 'FALSE'; exit;}
+}else{echo 'FALSE'; exit;}

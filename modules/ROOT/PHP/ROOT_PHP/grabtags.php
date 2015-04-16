@@ -1,7 +1,7 @@
 <?php
 
 
-  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
   $db = MySQLi_localhost_connect();
   $query = "SELECT `class`,`html`,`glyph` FROM `Cabins4LessFAQ`.`Tags` WHERE `tagID` > 0";
   $result = $db->query($query);

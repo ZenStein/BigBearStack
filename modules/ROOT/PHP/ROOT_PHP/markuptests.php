@@ -1,7 +1,7 @@
 <?php
 
 
-  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 
 
 echo 'hey';
