@@ -1,10 +1,10 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 
 
 $db = MySQLi_localhost_connect();
-$sql = "SELECT `question`, `qid` FROM `Cabins4LessFAQ`.`Master_Questions`";
+$sql = "SELECT `question`, `qid`,`tags` FROM `Cabins4LessFAQ`.`Master_Questions`";
 
 
 //$sql = "SELECT  firstname, lastname FROM MyGuests";
@@ -15,10 +15,12 @@ while ($row = $result->fetch_assoc()){
 
     $qid = $row['qid'];
     $title = $row['question'];
-
+$tags = $row['tags'];
     $temp = array(
-          "qid"=>$qid,
-        "question"=>$title
+          "id"=>$qid,
+        "question"=>$title,
+        "tags"=>$tags,
+        "toggler"=>true
     );
 
     array_push($objArr, json_encode($temp));

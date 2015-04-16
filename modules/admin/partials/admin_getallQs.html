@@ -1,27 +1,22 @@
-<h3> All Questionsss</h3>
+<h3> All Questions</h3>
 
 
 
 <a href="#/admin">admin</a>
-<div class="container-fluid">
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>id</th>
-                <th>Question</th>
-                <th>EditAnswers</th>
-                <th>addNewAnswer</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="q in allCTRL.allqs">
-                <td>{{ q.qid }}</td>
-                <td>{{ q.question }}</td>
-                <td><button>edit</button></td>
-                <td><button>+</button></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+
+
+<table ng-table="tableParams" show-filter="true" class="table ng-table-rowselected">
+    <tr ng-repeat="user in users" ng-click="user.$selected = !user.$selected; changeSelection(user)" ng-class="{'active': user.$selected}">
+        <td data-title="'id'" header-class="text-center" class="text-left" sortable="'id'" filter="{ 'id': 'text' }" >
+            {{user.id}}
+        </td>
+        <td data-title="'question'" header-class="text-center" class="text-left" sortable="'question'" filter="{ 'question': 'text' }">
+            {{user.question}}
+        </td>
+
+        <td data-title="'tags'" header-class="text-center" class="text-left" sortable="'tags'" filter="{ 'tags': 'text' }">
+            {{user.tags}}
+        </td>
+        <td><button>edit</button><button>remove</button><button><a ng-href="#/admin/unanswered/{{user.id}}/createanswer">+answer</a></button></td>
+    </tr>
+</table>

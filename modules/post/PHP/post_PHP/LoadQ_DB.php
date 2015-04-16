@@ -1,6 +1,6 @@
 <?php
-  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/classes.php';
-  include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/classes.php';
+  include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
   
     $MrCleaner = new InputsCleanse(
     array(

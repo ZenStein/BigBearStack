@@ -7,7 +7,7 @@
 
 (function(){
 		angular
-            .module ('admin', [])
+            .module ('admin', ['ngTable'])
             .constant ('PHPadmin', 'modules/admin/PHP/admin_PHP/')
             .config (admin_config)
             .controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
@@ -195,7 +195,7 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
         CTRL.registrationkey = result;
         return CTRL.createansService.getquestion();}).then(function(result){
           CTRL.questiondata = result;
-          return CTRL.imageobj.makeimagedir($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
+          //return CTRL.imageobj.makeimagedir($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
             return CTRL.imageobj.http_get__Arr_image_obj($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
               console.log('imageobj.http_get__Arr_image_obj result');
               console.log(result);
@@ -269,7 +269,7 @@ function adminService_images($http, ROOT_HOST, $routeParams){
     function http_get__Arr_image_obj(qid,key){
             var req = {
                     method: 'POST',
-                        url: ROOT_HOST +'/getimagelist.php',
+                        url: ROOT_HOST +'getimagelist.php',
                      headers: {'Content-Type': 'application/json'},
                        params:{qid:qid,key:key}
                                };
@@ -295,7 +295,7 @@ function adminService_images($http, ROOT_HOST, $routeParams){
 
     function add_Arr_image_objs(image_obj){
                 console.log('this.Arr_image_objs[0].image');
-                console.log(this.Arr_image_objs[0].image);
+                //console.log(this.Arr_image_objs[0].image);
                 console.log('param add_Arr');
                 console.log(image_obj);
                 if(this.Arr_image_objs[0].image == 'default.png'){

@@ -1,3 +1,9 @@
+<style>
+    .carousel-control {
+        display: none;
+    }
+</style>
+
 <div class="jumbotron">
   <div class="row">
     <div class="col-sm-0 col-md-2 col-lg-2"></div> 
@@ -55,10 +61,10 @@
             <div class="col-md-6">
                 <carousel interval="myInterval">
                     <slide ng-repeat="slide in answer.images" active="slide.active">
-                        <img ng-src="http://localhost/images/answers/{{ answer.qid }}/{{answer.key}}/{{ slide.image }}" style="height:300px;margin:auto;">
+                        <img ng-src="http://localhost/BigBearStack/images/answers/{{ answer.qid }}/{{answer.key}}/{{ slide.image }}" style="height:300px;margin:auto;">
 
                         <div class="captionplacement">
-                            {{slide.text}}
+                            {{ slide.text }}
                         </div>
                     </slide>
                 </carousel>

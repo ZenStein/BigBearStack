@@ -14,7 +14,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="unanswered in UnansweredCTRL.data">
-                <td>1</td>
+                <td>{{ unanswered.qid }}</td>
                 <td><a href="#/admin/unanswered/{{ unanswered.qid }}/createanswer">{{unanswered.question}}</a></td>
             </tr>
             </tbody>

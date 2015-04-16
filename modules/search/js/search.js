@@ -36,7 +36,7 @@
 
 		angular
 						.module ('search', [])
-						.constant('ROOT_HOST','http://localhost/')
+						.constant('ROOT_HOST','http://localhost/BigBearStack/')
 						.constant('PHPsearch', 'modules/search/PHP/search_PHP/')
 						.config (search_config)
 						.provider ('searchProvider', searchProvider)

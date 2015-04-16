@@ -47,7 +47,7 @@
             <div class="col-md-6">
                 <carousel interval="myInterval">
                     <slide ng-repeat="slide in CreateAnswerCTRL.imageobj.Arr_image_objs" active="slide.active">
-                            <img ng-src="http://localhost/images/answers/{{ slide.qid }}/{{slide.key}}/{{slide.image}}" style="height:300px;margin:auto;">
+                            <img ng-src="http://localhost/BigBearStack/images/answers/{{ slide.qid }}/{{slide.key}}/{{slide.image}}" style="height:300px;margin:auto;">
 
                         <div class="captionplacement">
                             {{slide.text}}
@@ -96,7 +96,7 @@
                                         <div class="row">
                                             <div class="col-xs-12 col-md-8 col-md-offset-2">
                                                <label ng-repeat="names in CreateAnswerCTRL.imageobj.Arr_image_objs" style="position: relative;">
-                                                 <img ng-src="http://localhost/images/answers/{{names.qid}}/{{names.key}}/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
+                                                 <img ng-src="http://localhost/BigBearStack/images/answers/{{names.qid}}/{{names.key}}/{{names.image}}"  style="height: 100px; width: 175px;margin-bottom: 10px" alt="..." class="img-thumbnail" ng-click="gotclicked = !gotclicked" ng-init="gotclicked = false"><br>
                                                  <input ng-show="gotclicked" type="text" ng-model="names.text" style="position: absolute;bottom: 0px; width: 100%">
                                                </label>
                                             </div>

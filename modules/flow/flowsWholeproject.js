@@ -92,7 +92,7 @@
 						testMethod: 'GET',
 						uploadMethod: 'POST',
 						prioritizeFirstAndLastChunk: false,
-						target: 'http://localhost/upload.php',
+						target: 'http://localhost/BigBearStack/upload.php',
 						testChunks: true,
 						generateUniqueIdentifier: null,
 						maxChunkRetries: 0,

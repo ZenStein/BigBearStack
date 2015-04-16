@@ -1,6 +1,6 @@
 <?php
 
-include $_SERVER['DOCUMENT_ROOT'] . '/PHP_includes/functions.php';
+include $_SERVER['DOCUMENT_ROOT'] . '/BigBearStack/PHP_includes/functions.php';
 $qid = check_input($_REQUEST['qid']);
 settype($qid, "integer"); 
 $db = MySQLi_localhost_connect();

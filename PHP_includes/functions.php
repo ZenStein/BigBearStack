@@ -2,21 +2,27 @@
   function MySQLi_localhost_connect()
   {
    /*Localhost*/
-    $host     = 'localhost';
-    $username = 'root';
-    $password = 'password';
+//    $host     = 'localhost';
+//    $username = 'root';
+//    $password = 'password';
+//    $database = 'Cabins4LessFAQ';
    /*Godaddy*/
-   //$host     = 'localhost';
-   //$username = 'tymetakrDB';
-   //$password = 'Aquem1n1';
+//   $host     = 'localhost';
+//   $username = 'tymetakrDB';
+//   $password = 'Aquem1n1';
+//   $database = 'Cabins4LessFAQ';
+   /*Remote to GoDaddy*/
+     $host     = '192.186.233.5'; // remote IP
+     $username = 'tymetakrDB';
+     $password = 'Aquemini213';
+     $database = 'Cabins4LessFAQ';
 
-    $database = 'Cabins4LessFAQ';
-    $db = new MySQLi($host,$username,$password,$database);
-    $error_message = $db->connect_error;
-    if($error_message != NULL){
+     $db = new MySQLi($host,$username,$password,$database);
+     $error_message = $db->connect_error;
+     if($error_message != NULL){
       die("did not connect to localhost");
-    }
-      return $db;
+     }
+     return $db;
   }
   
   function turnJSONobjIntoAssocArray($obj){
