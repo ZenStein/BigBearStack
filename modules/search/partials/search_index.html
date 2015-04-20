@@ -1,65 +1,66 @@
-<form>
-    <div class="input-group input-group-lg" style="margin-top:20px;margin-bottom:20px;">
-    <span class="input-group-addon" id="sizing-addon1">
-      <span class="glyphicon glyphicon-search"></span>
-    </span>
-        <input type="text" name="Qstring" ng-model="Search_IndexCTRL.inputquerystring.string" class="form-control"
-               placeholder="So what would you like to know ???" aria-describedby="sizing-addon1">
 
+
+
+    <div class="jumbotron top-15">
+        <h2 class="text-center">Welcome to Big Bear Lake, CA <br>
+            <small>find out what this place is all about!</small>
+        </h2>
     </div>
-    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
-        <span class="glyphicon glyphicon-tags">&nbsp;&nbsp;</span>
-        <span class="glyphicon glyphicon-triangle-bottom" ng-show="!isCollapsed"></span>
-        <span class="glyphicon glyphicon-triangle-top" ng-show="isCollapsed"></span>
-    </button>
-    &nbsp;&nbsp;
-        <label ng-repeat="x in Search_IndexCTRL.Tags" class="btn btn-{{x.class}} btn-xs" ng-model="x.selected" ng-show="x.selected"
-               ng-change="Search_IndexCTRL.settagFilters();" btn-checkbox>
-            {{x.html}}
-        </label>
-
-    <div class="row">
-        <div class="col-lg-2" style="text-align:center;">
-            <div collapse="!isCollapsed">
-                Filter; By; Tags:<br>
-                <label ng-repeat="y in Search_IndexCTRL.Tags" class="btn btn-{{y.class}} btn-xs" ng-model="y.selected"
-                       ng-change="Search_IndexCTRL.settagFilters();" btn-checkbox>
-                    {{y.html}}
-                </label>
-
-
-
-
-
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-2 col-md-3 col-lg-3"></div>
-        <div class="col-sm-8 col-md-6 col-lg-6">
-            <input type="submit" class="btn btn-primary btn-lg btn-block" value="Ask!!"
-                   ng-click="Search_IndexCTRL.getQueryQs()"/>
-        </div>
-        <div class="col-sm-2 col-md-3 col-lg-3"></div>
-    </div>
-
-    <hr style=" height:20px;">
-</form><br>
+    <hr>
 <div class="row">
-    <div class="col-lg-12" style="text-align:center;">
-        <div class="well well-sm"
-             ng-repeat="result in Search_IndexCTRL.resultdata.data | filter:Search_IndexCTRL.Tagfilters[0]
-             | filter:Search_IndexCTRL.Tagfilters[1] | filter:Search_IndexCTRL.Tagfilters[2] |
-               filter:Search_IndexCTRL.Tagfilters[3] | filter:Search_IndexCTRL.Tagfilters[4]">
-            <a href="#/search/{{result.qid}}"><h3>{{result.question | uppercase}} ?</h3></a><br>
-            <div ng-repeat="tag in result.tags" style="display:inline;">
-                <label class="btn btn-success btn-xs">{{ tag }}</label>&nbsp;&nbsp;
+    <div class="col-lg-12">
+
+
+        <form>
+            <div class="input-group input-group-lg" style="margin-top:20px;margin-bottom:20px;">
+                <span class="input-group-addon" id="sizing-addon1" tooltip-placement="right" tooltip="SearchTips">
+                  <a href="#"><span class="glyphicon glyphicon-search"></span></a>
+                </span>
+                    <input type="text" name="Qstring" ng-model="Search_IndexCTRL.inputquerystring.string" class="form-control"
+                           placeholder="Discover..." aria-describedby="sizing-addon1"
+                           ng-keyup="Search_IndexCTRL.getQueryQs('up')" ng-keydown="Search_IndexCTRL.getQueryQs('down')">
             </div>
-        </div>
+            <div class="col-md-4 col-md-offset-4" ng-show="Search_IndexCTRL.resultdata.data.length || Search_IndexCTRL.inputquerystring.string.length > 10">
+                <button type="button" class="btn btn-primary btn-lg btn-block" style="margin-top: -20px" ng-click="Search_IndexCTRL.post_question(Search_IndexCTRL.inputquerystring.string)">Ask this QQuestion!</button>
+            </div>
+        </form>
+
     </div>
 
-
-    <div class="col-lg-12" style="text-align:center">
-        <div>holder</div>
-    </div>
 </div>
+<hr>
+
+      <div class="well well-sm" style="margin-bottom: 20px; z-index: 100; position: relative">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="http://localhost/BigBearStack/images/cabins4lesslogo.png" style="width: 50px; height: 20px; position: relative; float: left; display: inline"><br>
+            </div>
+            <div class="col-lg-12">
+                <a><h3 style="margin-top: 0px;font-size: 30px">some q ?</h3></a>
+            </div>
+          <div class="col-lg-1">
+              <span class="badge"><input type="checkbox" ng-model="checker" ng-init="checker=false">44</span>
+          </div>
+            <div class="col-lg-10">
+
+            </div>
+          <div class="col-lg-1">
+              <span class="badge">42</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-down" ng-show="checker"> Slide down </div>
+
+    <div ng-init="checked=false">
+      <label>
+        <input type="checkbox" ng-model="checked" style="float:left; margin-right:10px;"> Is Visible...
+      </label>
+    </div>
+
+
+    <h1>My code below</h1>
+    <div class="stationary">one</div>
+    <div class="animated" ng-show="checked">animated</div>
+
+
+

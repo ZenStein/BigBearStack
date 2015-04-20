@@ -13,20 +13,23 @@
             .controller ('admin_ctrl_admin_index', admin_ctrl_admin_index)
             .controller ('admin_ctrl_unanswered', admin_ctrl_unanswered)
             .controller ('admin_ctrl_createanswer', admin_ctrl_createanswer)
+      .controller ('mytest', mytest)
             .service('adminService_images', adminService_images)
             .service("adminService_bullets", adminService_bullets)
             .service ("adminService_links", adminService_links)
             .service('createanswerService', createanswerService);
 
 
-
+function mytest(){
+  alert('mytest controller has fired off!');
+}
 
 
 function admin_config($routeProvider){
 		$routeProvider
 						.when ('/admin', {
 				templateUrl: 'modules/admin/partials/admin_index.html',
-				controller: 'admin_ctrl_admin_index as Admin_IndexCTRL'
+    controller: 'admin_ctrl_admin_index as Admin_IndexCTRL'
 		})
       .when ('/admin/allquestions', {
     templateUrl: 'modules/admin/partials/admin_getallQs.html',
@@ -36,7 +39,7 @@ function admin_config($routeProvider){
 				templateUrl: 'modules/admin/partials/admin_unanswered.html',
 				controller: 'admin_ctrl_unanswered as UnansweredCTRL'
 		})
-						.when ('/admin/unanswered/:qid_unanswered/createanswer', {
+						.when ('/admin/unanswered/:qid/createanswer', {
 				templateUrl: 'modules/admin/partials/admin_createanswer.html',
 				controller: 'admin_ctrl_createanswer as CreateAnswerCTRL'
 		});
@@ -90,7 +93,7 @@ function createanswerService(ROOT_HOST, $http, PHPadmin, $routeParams) {
       console.log('getreg');
       return $http.get(ROOT_HOST+PHPadmin+'getregistered.php?qid='+qid)
           .then(function(result){
-              var qid = $routeParams.qid_unanswered;
+              var qid = $routeParams.qid;
               var key = result.data;
               var pathname = ROOT_HOST + "images/answers/" +qid+ "/" +key;
               setkey(key);
@@ -135,7 +138,7 @@ function createanswerService(ROOT_HOST, $http, PHPadmin, $routeParams) {
       method: 'POST',
       url: ROOT_HOST + 'modules/answerviewer/PHP/answerviewer_PHP/getQ.php',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      params: {qid:$routeParams.qid_unanswered},
+      params: {qid:$routeParams.qid},
     };
     return $http (req).then (function (result) {
       console.log ("getQresult below");
@@ -170,7 +173,7 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
                title:"heres title",
          answerheader:"this is header",
                 author:"i am author",
-                    qid: $routeParams.qid_unanswered
+                    qid: $routeParams.qid
                         };
      CTRL.questiondata = {};
      CTRL.bulletobj = adminService_bullets;
@@ -188,15 +191,15 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
    });
     * */
 
-     CTRL.createansService.getregistered($routeParams.qid_unanswered)
+     CTRL.createansService.getregistered($routeParams.qid)
          .then(function(result){
         console.log('createansService.getregistered result');
         console.log(result);
         CTRL.registrationkey = result;
         return CTRL.createansService.getquestion();}).then(function(result){
           CTRL.questiondata = result;
-          //return CTRL.imageobj.makeimagedir($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
-            return CTRL.imageobj.http_get__Arr_image_obj($routeParams.qid_unanswered,CTRL.registrationkey);}).then(function(result){
+          //return CTRL.imageobj.makeimagedir($routeParams.qid,CTRL.registrationkey);}).then(function(result){
+            return CTRL.imageobj.http_get__Arr_image_obj($routeParams.qid,CTRL.registrationkey);}).then(function(result){
               console.log('imageobj.http_get__Arr_image_obj result');
               console.log(result);
               if(result == 'FALSE'){CTRL.imageobj.setdefault_Arr_image_objs();}
@@ -205,7 +208,7 @@ function admin_ctrl_createanswer ($scope, $http, $routeParams,adminService_image
       });
 
      CTRL.uploadFile = function (files) {
-      CTRL.imageobj.uploadfile(files, $routeParams.qid_unanswered, CTRL.registrationkey)
+      CTRL.imageobj.uploadfile(files, $routeParams.qid, CTRL.registrationkey)
         .success(function(result){
           console.log('upload file success result');
               console.log(result);
@@ -311,7 +314,7 @@ function adminService_images($http, ROOT_HOST, $routeParams){
         }
 
     function uploadfile(files, qid, key){
-             // var qid = $routeParams.qid_unanswered;
+             // var qid = $routeParams.qid;
               var fd = new FormData ();
             //Take the first selected file
             fd.append ('myfile', files[0]);

@@ -12,7 +12,7 @@ function postService($http, ROOT_HOST, ROOT_PHP, PHPpost){
 				        resetTags: resetTags
 		                    };
 
-		var postforminit = {"question": "Question Preview", "author": "Author"};
+		var postforminit = {"question": "No Question Asked", "author": "Author"};
 		function getalltags(){
 				var req = {
 										method: 'POST',
@@ -56,7 +56,7 @@ function postService($http, ROOT_HOST, ROOT_PHP, PHPpost){
 		  return {question: "", author: ""};
   }
 		function thankyoumessage	(){
-			//	alert('Thank You for you Submission.');
+				alert('Thank You for you Submission.');
 		}
 		function resetTags(Tags){
 						var numObj = Tags.length;

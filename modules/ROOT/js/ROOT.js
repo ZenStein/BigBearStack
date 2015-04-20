@@ -10,8 +10,10 @@
 		function ROOT_config ($routeProvider) {
 				$routeProvider
 								.when ('/', {
-						templateUrl: 'modules/ROOT/partials/landing.html',
-						controller: 'tester as Tester'
+						redirectTo: '/search'
+						////templateUrl: 'modules/ROOT/partials/landing.html',
+						//templateUrl: 'modules/search/partials/search_index.html',
+						//controller: 'tester as Tester'
 				})
 								.otherwise ({
 						redirectTo: '/'
@@ -41,7 +43,7 @@
 		}
 
 		angular
-						.module ('ROOT', ['ngRoute', 'ui.bootstrap', 'admin', 'featured', 'search', 'post', 'answerviewer','ngTouch', 'ngTable'])
+						.module ('ROOT', ['ngRoute', 'ui.bootstrap', 'admin', 'featured', 'search', 'post', 'answerviewer','ngTouch', 'ngTable','ngAnimate'])
 						.constant ('ROOT_HOST', 'http://localhost/BigBearStack/')
 						.constant ('ROOT_PHP', 'modules/ROOT/PHP/ROOT_PHP/')
 						.provider('ROOTProvider', ROOTProvider)

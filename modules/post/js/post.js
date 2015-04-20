@@ -6,7 +6,7 @@
 
 		function post_config ($routeProvider) {
 				$routeProvider
-								.when ('/post', {
+								.when ('/post/:question', {
 						templateUrl: 'modules/post/partials/post_index.html',
 						controller: 'post_ctrl_post_index as Post_IndexCTRL'
 				});

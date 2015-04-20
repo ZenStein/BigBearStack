@@ -1,35 +1,21 @@
 
-<div>
 
 
+<div class="jumbotron top-15 text-center" style="margin-bottom: 10px; padding-bottom: 0px; padding-right: 4px;">
+    <h2>{{ Post_IndexCTRL.forminput.question | uppercase }}?</h2>
 
-  <div class="jumbotron">
-    <div class="row">
-      <div class="col-sm-0 col-md-2 col-lg-2"></div>
-      <div class="col-sm-12 col-md-8 col-lg-8">
-        <p class="center">
-
-        <h2>{{ Post_IndexCTRL.forminput.question | uppercase}}?</h2></p>
-      </div>
-      <div class="col-sm-0 col-md-2 col-lg-2"></div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        <footer class="pull-right">
-          ~{{Post_IndexCTRL.forminput.author }}~&nbsp;&nbsp;
-        </footer>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12 col-md-12 col-lg-12">
-        {{Post_IndexCTRL.Tags | json}}
-        <label ng-repeat="x in Post_IndexCTRL.Tags" class="btn btn-{{x.class}} btn-xs" ng-model="x.selected" ng-show="x.selected"
-               btn-checkbox>
-          {{x.html}}
-        </label>
-        </div>
-      </div>
+    <p class="text-right"> ~{{ Post_IndexCTRL.forminput.author}}~&nbsp;&nbsp;  <cite title="Source Title"> {{ Post_IndexCTRL.forminput.timestamp }}  </cite></p>
+<div  class="row">
+  <div class="col-sm-11 col-md-11 col-lg-11">
+    <label ng-repeat="x in Post_IndexCTRL.Tags" class="btn btn-{{x.class}} btn-xs" ng-model="x.selected" ng-show="x.selected" btn-checkbox>
+      {{x.html}}
+    </label>
   </div>
+    <div class="col-sm-1 col-md-1 col-lg-1" style=" height: 30px; text-align: right"><a><i  class="fa fa-plus-circle fa-2x" style="position:relative;float: right; color: #008B0A"></i></a></div>
+</div>
+
+</div>
+
 
 
   <hr>
@@ -59,4 +45,3 @@
   </div>
     <div class="col-sm-2 col-md-2 col-lg-2"></div>
   </div>
-</div>

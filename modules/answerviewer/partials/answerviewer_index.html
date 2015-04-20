@@ -3,39 +3,16 @@
         display: none;
     }
 </style>
+<div class="jumbotron top-15 text-center" style="margin-bottom: 10px; padding-bottom: 0px; padding-right: 4px;">
+    <h2>{{ AnswerViewerCTRL.package.question.question }}?</h2>
 
-<div class="jumbotron">
-  <div class="row">
-    <div class="col-sm-0 col-md-2 col-lg-2"></div> 
-    <div class="col-sm-12 col-md-8 col-lg-8">
-      <p class="center"> <h2>{{ AnswerViewerCTRL.package.question.question }}?</h2></p>
-    </div>
-    <div class="col-sm-0 col-md-2 col-lg-2"></div>
-    </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-      <footer class="pull-right">
-        ~{{AnswerViewerCTRL.package.question.author}}~&nbsp;&nbsp;
-        <cite title="Source Title">
-          {{AnswerViewerCTRL.package.question.timestamp}}
-        </cite>
-      </footer>
-    </div> 
-  </div>    
+    <p class="text-right"> ~{{AnswerViewerCTRL.package.question.author}}~&nbsp;&nbsp;  <cite title="Source Title"> {{AnswerViewerCTRL.package.question.timestamp}}  </cite></p>
+<div  class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12" style=" height: 30px; text-align: right"><a href=" #/search/{{ AnswerViewerCTRL.routeparams_qid.qid }}/postanswer"><i  class="fa fa-plus-circle fa-2x" style="position:relative;float: right; color: #008B0A"></i></a></div>
 </div>
-<div>Data = {{ AnswerViewerCTRL.package.answers[0].bullets[0].text}}</div>
-<hr>
-<nav class="navbar navbar-inverse">
-<form class="navbar-form navbar-center" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="More Questions?">
-  </div>
-  <button type="submit" class="btn btn-default">Go!</button>
-  <button ng-click="AnswerViewerCTRL.addanswer();" class="btn btn-success">+</button>
-<p class="navbar-text pull-right">Info on <a class="navbar-link">ThisQuestion</a></p>
 
-</form>
-</nav>
+</div>
+<hr>
 
 <div ng-repeat="answer in AnswerViewerCTRL.package.answers">
 <accordion close-others="oneAtATime">
@@ -62,10 +39,7 @@
                 <carousel interval="myInterval">
                     <slide ng-repeat="slide in answer.images" active="slide.active">
                         <img ng-src="http://localhost/BigBearStack/images/answers/{{ answer.qid }}/{{answer.key}}/{{ slide.image }}" style="height:300px;margin:auto;">
-
-                        <div class="captionplacement">
-                            {{ slide.text }}
-                        </div>
+                        <div class="captionplacement"> {{slide.text}} </div>
                     </slide>
                 </carousel>
             </div>

@@ -39,6 +39,7 @@ function ModalInstanceCtrl ($scope, $modalInstance, $http, $routeParams, ROOT_HO
 function answerviewer_ctrl_answerviewer_index ($scope, $routeParams, $log, $modal, answerviewerService) {
 
 		var answerviewerctrl = this;
+		answerviewerctrl.routeparams_qid = {qid : $routeParams.qid};
 		answerviewerctrl.init = answerviewerService.activate ($routeParams.qid);
 		answerviewerctrl.package = answerviewerService.data;
    // answerviewerctrl.test = angular.fromJson(answerviewerctrl.package.answers.images);

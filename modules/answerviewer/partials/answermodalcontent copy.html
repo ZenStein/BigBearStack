@@ -1,0 +1,40 @@
+<br><br>
+<div class="row">
+    <div class=" col-md-1"></div>
+    <div class=" col-md-10">
+        <form ng-submit="postanswer()" >
+
+            <div class="form-group">
+                <label for="author" class="col-sm-2 control-label">Author:</label>
+
+                    <input type="name" ng-model="author" class="form-control" id="author" placeholder="~Anonymous" value="Anonymous">
+
+
+                    <label>
+                        <input type="checkbox"> SignIn to post with selected Item
+                    </label>
+                </div>
+
+            <div class="form-group">
+
+                    <div>
+                        <input type="text" id="title" name="title" ng-model="answercontent" placeholder="Title">
+                        <input type="text" id="answerheader" name="answerheader" ng-model="answerheader" placeholder="Header">
+
+                    </div>
+                </div>
+
+        <div class="form-group">
+
+                    <input type="submit" id="submit" value="Submit" />
+
+                </div>
+
+        </form>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+    <div class=" col-md-1"></div>
+</div>
+
+
+
