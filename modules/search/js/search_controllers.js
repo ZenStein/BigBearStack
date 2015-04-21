@@ -2,14 +2,14 @@
  * Created by C-Styles on 2/25/15.
  */
 
-function search_ctrl_search_index ( $location, $routeParams, searchService, postService) {
+function search_ctrl_search_index ( $location, $routeParams, $scope, searchService, postService) {
 	//	alert('SearchController init');
 		var searchctrl = this;
 		var tracker;
 		var hasbeenasked = false;
-		searchctrl.checker = {ischecked:false};
+		$scope.fuckthis = "fuck you";
 		searchctrl.inputquerystring = {
-																																		string:'',
+																																		string:'what',
 				                              alreadyasked:[]
 																																	};
 		searchctrl.resultdata = [];
